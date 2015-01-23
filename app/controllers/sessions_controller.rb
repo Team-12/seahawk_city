@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        render :text => "logged out"
     end
 
 end
