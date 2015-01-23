@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
     resources :locations
     resources :events
+    resources :checkins
 
   # Example resource route with options:
   #   resources :products do
