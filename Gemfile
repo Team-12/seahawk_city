@@ -32,8 +32,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'geocoder'
-gem 'bootstrap_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,4 +52,6 @@ group :production do
   gem 'rails_12factor'
 end
 
+### Non-grouped, non-default gems go here:
 gem 'bootstrap_form'
+gem 'geocoder'
