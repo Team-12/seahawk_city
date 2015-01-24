@@ -1,29 +1,54 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h1>Seahawk City Home Page (site#index)</h1>
+      <h1>SeahawkCity Home Page</h1>
       <% if @current_user %>
-        <p>Current User: <%= @current_user.user_name %> </p>
+        <p>Current User: <%= @current_user.user_name %> (<%= link_to "profile", profile_path %>)</p>
         <%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %>
       <% else %>
         <%= link_to "Login", login_path, :class => "btn btn-primary" %> 
-        <%= link_to "Sign Up", signup_path %> 
+        
       <% end %>
     </div>
   </div>
+  <hr>
   <div class="row">
     <div class="col-xs-12">
-    <br><p>To do:</p>
+      <h2>Map Section</h2>
+      <p>List of Locations (displayed as map) goes here...</p>
       <ul>
-        <li>Wire up current user display to profile route</li>
-        <li>Create fake marker data</li>
-        <li>Display fake marker data</li>
-        <li>Wire up fake marker data to location route</li>
-        <li>Create fake event data</li>
-        <li>Display fake event data</li>
-        <li>Wire up fake event data to event route</li>
-        <li>Create "Checkin" button</li>
-        <li>Wire up "Checkin" button to new_checkin route</li>
+        <li><%= link_to "Fake Location", "locations/1" %></li>
+      </ul>
+      <br><%= link_to "Checkin", new_checkin_path, :class => "btn btn-primary" %> 
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Event List Section</h2>
+      <p>List of Events goes here...</p>
+      <ul>
+        <li><%= link_to "Fake Event", "events/1" %></li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+    <br><p>Development Notes:</p>
+      <ul>
+        <li>&check; Wire up current user display to profile route</li>
+        <li>&check; Display fake marker link</li>
+        <li>&check; Wire up fake marker data to location route</li>
+        <li>&check; Display fake event link</li>
+        <li>&check; Wire up fake event data to event route</li>
+        <li>&check; Create "Checkin" button</li>
+        <li>&check; Wire up "Checkin" button to new_checkin route</li>
+        <li>Create fake marker seed data</li>
+        <li>Create fake event seed data</li>
+        <li>Populate db with seed data</li>
+        <li>Replace fake links with seed data for both markers and events</li>
+        <li>Replace list of markers with actual map display</li>
       </ul>
     </div>
   </div>
