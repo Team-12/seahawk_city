@@ -41,12 +41,48 @@ users = User.create([
         ])
 
 # Six Locations
-# locations = Location.create([
-#           {Space Needle},
-#           {Russell Investments Center},
-#           {Stadium Place Apartments},
-#           {Yoga Studio}
-#         ])
+locations = Location.create([
+          { latitude: nil,
+            longitude: nil, 
+            name: "Space Needle",
+            desc: "Iconic Seattle Landmark",
+            address_street: nil,
+            address_city: nil,
+            address_state: nil,
+            address_zip: nil,
+            address_country: nil,
+          },
+          { latitude: nil,
+            longitude: nil, 
+            name: "Russell Investments Center",
+            desc: "No relation to the quarterback (we think)",
+            address_street: nil,
+            address_city: nil,
+            address_state: nil,
+            address_zip: nil,
+            address_country: nil,
+          },
+          { latitude: nil,
+            longitude: nil, 
+            name: "Stadium Place Apartments",
+            desc: "Close to the CLink",
+            address_street: nil,
+            address_city: nil,
+            address_state: nil,
+            address_zip: nil,
+            address_country: nil,
+          },
+          { latitude: nil,
+            longitude: nil, 
+            name: "Yoga Studio",
+            desc: "Right next door!",
+            address_street: nil,
+            address_city: nil,
+            address_state: nil,
+            address_zip: nil,
+            address_country: nil,
+          }
+        ])
 
 # Six Events
 # events = Event.create([])
