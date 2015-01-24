@@ -1,1 +1,27 @@
-<h1>my fucking profile</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h1>User Profile</h1>
+      <% if @current_user %>
+        <p>Current User: <%= @current_user.user_name %> (<%= link_to "profile", profile_path %>)</p>
+        <%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %>
+      <% else %>
+        <%= link_to "Login", login_path, :class => "btn btn-primary" %> 
+        
+      <% end %>
+
+      <hr>
+
+      <h4>Dev Notes</h4>
+      <ul>
+        <li>Display user_name, email</li>
+        <li>Link to edit email</li>
+        <li>Display list of checkins and score</li>
+        <li>Link to reset password</li>
+        <li>Link to 'Add your business'</li>
+        <li>Link to delete account (?)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
