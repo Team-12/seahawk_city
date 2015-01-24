@@ -1,1 +1,35 @@
-<h1>Location Index Page</h1>
+<h1>This is the HOME PAGE</h1><br>
+<h2>Map will be here</h2><br>
+
+For testing, displaying list of sites:
+
+<table class="table">
+  <tr>
+    <th> Name </th>
+    <th> Description </th>
+    <th> Latitude </th>
+    <th> Longitude </th>
+    <th> Street </th>
+    <th> City </th>
+    <th> State </th>
+    <th> Zipcode </th>
+    <th> Country </th>
+    <th> Created </th>
+    <th> Updated </th>
+  </tr>
+  <% @locations.each do |location| %>
+    <tr>
+      <td> <%= location.name %> </td>
+      <td> <%= location.desc %> </td>
+      <td> <%= location.latitude %> </td>
+      <td> <%= location.longitude %> </td>
+      <td> <%= location.address_street %> </td>
+      <td> <%= location.address_city %> </td>
+      <td> <%= location.address_state %> </td>
+      <td> <%= location.address_zip %> </td>
+      <td> <%= location.address_country %> </td>
+      <td> <%= location.created_at %> </td>
+      <td> <%= location.updated_at %> </td>
+    </tr>
+  <% end %>
+</table>
