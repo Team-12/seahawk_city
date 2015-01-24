@@ -1,3 +1,12 @@
-<h1>Login page</h1>
-
-<%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete%>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Login to SeahawkCity</h1>
+      <%= bootstrap_form_for :user do |f| %> 
+        <%= f.text_field :email, placeholder: "Enter your email" %>
+        <%= f.password_field :password, placeholder: "Enter your password" %>
+        <%= f.submit "Login" %>  
+      <% end %> 
+    </div>
+  </div>
+</div>
