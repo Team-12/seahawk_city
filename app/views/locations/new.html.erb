@@ -1,1 +1,15 @@
 <h1>New Location Page</h1>
+<div class="container-fluid">
+  <%= bootstrap_form_for(@location) do |f| %>
+    <%= f.text_field :name, :placeholder => "Location name" %>
+    <%= f.text_field :desc, :placeholder => "Description"%>
+    <%= f.number_field :latitude, :placeholder => "Latitude", :step => "any" %>
+    <%= f.number_field :longitude, :placeholder => "Longitude", :step => "any" %>
+    <%= f.text_field :address_street, :placeholder => "Street" %>
+    <%= f.text_field :address_city, :placeholder => "City" %>
+    <%= f.text_field :address_state, :placeholder => "State" %>
+    <%= f.text_field :address_zip, :placeholder => "Zipcode" %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
