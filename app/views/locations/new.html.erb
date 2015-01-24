@@ -1,4 +1,5 @@
 <h1>New Location Page</h1>
+<%= link_to "Locations Index", locations_path %>
 <div class="container-fluid">
   <%= bootstrap_form_for(@location) do |f| %>
     <%= f.text_field :name, :placeholder => "Location name" %>
