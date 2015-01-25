@@ -5,15 +5,20 @@ class EventsController < ApplicationController
   end
 
   def new
+    @event = Event.new
   end
 
   def create
   end
 
   def show
-    # @event = Event.find_by_id
-    ### BOOKMARK << finish defining @event to use on 
-    ###              show.html.erb
+    @event = Event.find_by_id(params[:id])
+    if @event
+      # Display page
+      render :show
+    else
+      # Error: Event not found
+    end
   end
 
   def edit
