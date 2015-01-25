@@ -1,23 +1,34 @@
 class EventsController < ApplicationController
 
-    def index
-    end
+  def index
 
-    def new
-    end
+  end
 
-    def create
-    end
+  def new
+  end
 
-    def show
-    end
+  def create
+  end
 
-    def edit
-    end
+  def show
+    # @event = Event.find_by_id
+    ### BOOKMARK << finish defining @event to use on 
+    ###              show.html.erb
+  end
 
-    def update
-    end
+  def edit
+  end
 
-    def destroy
-    end
+  def update
+
+  end
+
+  def destroy
+  end
+
+  ###
+  def event_params
+    params.require(:event).permit(:name,:desc,:date,:start_time,:end_time,:photo_url)
+  end
+
 end
