@@ -1,18 +1,5 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h1>SeahawkCity Home Page</h1>
-      <% if @current_user %>
-        <p>Current User: <%= @current_user.user_name %> (<%= link_to "profile", profile_path %>)</p>
-        <%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %>
-      <% else %>
-        <%= link_to "Login", login_path, :class => "btn btn-primary" %> 
-        
-      <% end %>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
     <div class="col-xs-12">
       <h2>Map Section</h2>
       <p>List of Locations (displayed as map) goes here...</p>

@@ -1,25 +1,49 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12">
       <h1>User Profile</h1>
-      <% if @current_user %>
-        <p>Current User: <%= @current_user.user_name %> (<%= link_to "profile", profile_path %>)</p>
-        <%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %>
+      <hr>
+
+      <%= bootstrap_form_for :user do |f| %> 
+        <%= f.text_field :user_name, :disabled => "disabled" %> 
+        <%= f.text_field :email, :disabled => "disabled" %> 
+        <%= f.password_field :password, :value => "xxxxx", :disabled => "disabled" %> 
+        <%= link_to "Edit", edit_profile_path, :class => "btn btn-primary" %>
+      <% end %> 
+      <hr>
+
+      <% if @locations %>
+        <h3>Your Locations</h3>
+        <ul>
+        <% @locations.each do %>
+          <li>Fake Location...</li>
+        <% end %> 
+        </ul>
       <% else %>
-        <%= link_to "Login", login_path, :class => "btn btn-primary" %> 
-        
+        <%= link_to "Put Your Business On The Map!", new_location_path %>
+      <% end %>
+      <hr>
+      
+      <% if @checkins %>
+        # NOTE: Should sort/group these checkin type (new, exiting, event)
+        <h3>Your Checkins</h3>
+        <ul>
+        <% @checkins.each do %>
+          <li>Fake Checkin...</li>
+        <% end %> 
+        </ul>
+      <% else %>
+        <p>You have no checkins. :-(</p>
       <% end %>
 
       <hr>
-
       <h4>Dev Notes</h4>
       <ul>
-        <li>Display user_name, email</li>
-        <li>Link to edit email</li>
-        <li>Display list of checkins and score</li>
-        <li>Link to reset password</li>
+        <li>&check; Display user_name, email, password (hidden)</li>
+        <li>&check; Link to edit details</li>
+        <li>Display list of owned locations</li>
         <li>Link to 'Add your business'</li>
-        <li>Link to delete account (?)</li>
+        <li>Display list of checkins and score</li>
       </ul>
     </div>
   </div>

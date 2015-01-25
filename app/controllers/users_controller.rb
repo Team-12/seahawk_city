@@ -15,7 +15,10 @@ class UsersController < ApplicationController
   end
 
   def profile
-    # get my profile
+    @user = current_user
+    # @locations = Location.find_by_user_id(@user.user_id)
+    @locations = nil
+    @checkins = nil
   end
 
   def edit_profile
