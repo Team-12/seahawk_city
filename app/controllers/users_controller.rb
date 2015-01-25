@@ -16,7 +16,10 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    ### TODO: Save user's locations & checkins to instance variables here --PH--
     # @locations = Location.find_by_user_id(@user.user_id)
+
+    ### This is just temporary until above is done. --PH--
     @locations = nil
     @checkins = nil
   end
