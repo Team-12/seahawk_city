@@ -36,11 +36,7 @@ class LocationsController < ApplicationController
             end
         else
             #GEOCODE BY ADDRESS to Get Longitude & Latitude
-
-            a = geocoded_by address
-            # render json: params
-            # geocoded_by :address
-            # after_validation :geocode
+            a = Geocoder.coordinates(address)
             render json: a
         end
         # redirect_to locations_path
