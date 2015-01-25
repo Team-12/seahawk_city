@@ -12,8 +12,8 @@
       <% end %> 
       <hr>
 
+      <h3>Your Registered Locations</h3>
       <% if @locations %>
-        <h3>Your Locations</h3>
         <ul>
         <% @locations.each do %>
           <li>Fake Location...</li>
@@ -24,9 +24,9 @@
       <% end %>
       <hr>
       
+      <h3>Your Checkins</h3>
       <% if @checkins %>
         # NOTE: Should sort/group these checkin type (new, exiting, event)
-        <h3>Your Checkins</h3>
         <ul>
         <% @checkins.each do %>
           <li>Fake Checkin...</li>
