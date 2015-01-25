@@ -1,13 +1,5 @@
 class LocationsController < ApplicationController
 
-    # reverse_geocoded_by :latitude, :longitude
-    # after_validation :reverse_geocode  # auto-fetch address
-
-    #avoid unnessary API Requests (only if address present or change since last change); ex:
-    #after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
-
-
-
     def index
         @locations = Location.all
     end
@@ -16,30 +8,31 @@ class LocationsController < ApplicationController
         @location = Location.new
     end
 
-        # @location = Location.find_or_create_by(latitude: :latitude,longitude: :longitude)
-        # @location = Location.where(location_params).where(location.latitude => :latitude, location.longitude => :longitude).first_or_create
 
     def create
-        # @address = params[:location][:address_street].length > 0 ? params[:location][:address_street]+", " : ""+params[:location][:address_city].length > 0 ? params[:location][:address_city]+", "
-        # render json: params
         if (params[:location][:latitude] != "") and (params[:location][:longitude] != "")
             #IF there is not a Latitude or Longitude, geocode based on address below
-
             existing_location = Location.find_by_latitude_and_longitude(params[:location][:latitude],params[:location][:longitude])
             if existing_location
                 #IF it's an existing location, we should add photo to existing MapFlag
                 redirect_to new_location_path
             else
-                @location = Location.create(location_params)
                 #IF it's not an existing location, create a new MapFlag and attach image
-                redirect_to locations_path
+                @lat_long_string = params[:location][:latitude]+", "+params[:location][:longitude]
+                return geocoded_address
+
+                # The code below works and can add site to DB only if geocoded_by :address is commented out in models>location.rb
+                # Has something to do with this: http://www.rubydoc.info/github/alexreisner/geocoder/master/frames#Forward_and_Reverse_Geocoding_in_the_Same_Model
+
+                # @location = Location.create(location_params)
+                # redirect_to locations_path
+
             end
         else
             #GEOCODE BY ADDRESS to Get Longitude & Latitude
-            a = Geocoder.coordinates(address)
-            render json: a
+            lat_long_array = Geocoder.coordinates(address)
+            render json: lat_long_array
         end
-        # redirect_to locations_path
     end
 
     def show
@@ -55,41 +48,35 @@ class LocationsController < ApplicationController
     end
 
     def location_params
-        params.require(:location).permit(:name,:desc,:longitude,:latitude,:address_street,:address_city,:address_state,:address_zip,:address_country)
+        params.require(:location).permit(:name,:desc,:longitude,:latitude,:address_street,:address_city,:address_state,:address_zip,:address_country, :address)
     end
 
     def address
-        if params[:location][:address_street] != ""
-            address_street = params[:location][:address_street]+", "
-        else
-            address_street = ""
-        end
+        street = params[:location][:address_street]
+        city = params[:location][:address_city]
+        state = params[:location][:address_state]
+        zip = params[:location][:address_zip]
+        country = params[:location][:address_country]
 
-        if params[:location][:address_city] != ""
-            address_city = params[:location][:address_city]+", "
-        else
-            address_city = ""
-        end
+        return [street, city, state, zip, country].compact.join(', ')
+    end
 
-        if params[:location][:address_state] != ""
-            address_state = params[:location][:address_state]+", "
-        else
-            address_state = ""
-        end
-
-        if params[:location][:address_zip] != ""
-            address_zip = params[:location][:address_zip]+", "
-        else
-            address_zip = ""
-        end
-
-        if params[:location][:address_country] != ""
-            address_country = params[:location][:address_country]+", "
-        else
-            address_country = ""
-        end
-
-        return (address_street+address_city+address_state+address_zip+address_country).chomp(", ")
+    def geocoded_address
+        address_array = Geocoder.search(@lat_long_string)
+        first_match = address_array.first
+        parsed_address_hash = {
+            "street" => first_match.street_number+" "+first_match.route,
+            "city" => first_match.city,
+            "state" => first_match.state_code,
+            "zip" => first_match.postal_code,
+            "country" => first_match.country_code,
+            "country_full" => first_match.country,
+            "address" => first_match.address
+        }
+            # render json: street+", "+city+", "+state+", "+zip+", "+country
+        render json: parsed_address_hash
     end
 
 end
+
+
