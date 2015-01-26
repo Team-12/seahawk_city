@@ -76,7 +76,7 @@ locations = Location.create([
           },
           { latitude: nil,
             longitude: nil,
-            name: "Yoga Studio",
+            name: "Ripple Yoga Studio",
             desc: "Right next door!",
             address_street: "1311 Republican Street",
             address_city: "Seattle",
