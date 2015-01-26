@@ -4,9 +4,13 @@ For testing, displaying list of sites:
 <%= javascript_include_tag "//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" %>
 <%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
 
+For testing, displaying list of sites:
+
+<h3>Navigate to: <%= link_to "Add Location", new_location_path %></h3><br>
 
 <table class="table">
   <tr>
+    <th> Address Search </th>
     <th> Name </th>
     <th> Description </th>
     <th> Latitude </th>
@@ -21,6 +25,7 @@ For testing, displaying list of sites:
   </tr>
   <% @locations.each do |location| %>
     <tr>
+      <td> <%= location.address %> </td>
       <td> <%= location.name %> </td>
       <td> <%= location.desc %> </td>
       <td> <%= location.latitude %> </td>
@@ -48,6 +53,5 @@ For testing, displaying list of sites:
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    
   });
 </script>
