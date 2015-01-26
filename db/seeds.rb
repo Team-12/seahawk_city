@@ -105,7 +105,7 @@ events = Event.create([
             date: "2015/02/01",
             start_time: "12:00",
             end_time: "8:00",
-            photo_url: "http://img.scoop.it/MXyuXr6skFBcOBE45TuYnDl72eJkfbmt4t8yenImKBVvK0kTmF0xjctABnaLJIm9"
+            photo_url: "http://media.thenewstribune.com/smedia/2014/05/08/23/00/1wC2dn.AuSt.5.jpg"
           }
         ])
 
