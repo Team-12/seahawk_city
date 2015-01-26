@@ -4,7 +4,7 @@ class Location < ActiveRecord::Base
   has_many :checkins, as: :checkinable
   belongs_to :user
 
-  # geocoded_by :address
+  geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
 
   after_validation :geocode, :reverse_geocode
