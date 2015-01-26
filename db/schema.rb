@@ -11,14 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123015745) do
+ActiveRecord::Schema.define(version: 20150126024506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "checkins", force: :cascade do |t|
-    t.string   "latitude"
-    t.string   "longitude"
     t.text     "note"
     t.string   "photo_url"
     t.integer  "checkinable_id"
@@ -26,6 +24,8 @@ ActiveRecord::Schema.define(version: 20150123015745) do
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "checkins", ["checkinable_type", "checkinable_id"], name: "index_checkins_on_checkinable_type_and_checkinable_id", using: :btree
@@ -37,14 +37,14 @@ ActiveRecord::Schema.define(version: 20150123015745) do
     t.date     "date"
     t.time     "start_time"
     t.time     "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "photo_url"
+    t.integer  "user_id"
+    t.integer  "location_id"
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string   "latitude"
-    t.string   "longitude"
     t.string   "name"
     t.text     "desc"
     t.string   "address_street"
@@ -54,13 +54,10 @@ ActiveRecord::Schema.define(version: 20150123015745) do
     t.string   "address_country"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-  end
-
-  create_table "tests", force: :cascade do |t|
-    t.string   "name"
-    t.string   "desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
   end
 
   create_table "users", force: :cascade do |t|

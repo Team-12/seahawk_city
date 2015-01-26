@@ -1,3 +1,20 @@
-<h1>Login page</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Login</h1>
 
-<%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete%>
+      <% if @user.errors.any? %>
+          <% @user.errors.full_messages.each do |error| %>
+              <div class="alert alert-danger"><%= error %></div>
+          <% end %>
+      <% end %>
+
+      <%= bootstrap_form_for :user do |f| %> 
+        <%= f.text_field :email, placeholder: "Enter your email" %>
+        <%= f.password_field :password, placeholder: "Enter your password" %>
+        <%= f.submit "Login", :class => "btn btn-primary" %> or <%= link_to "Sign up", signup_path %>   
+
+      <% end %> 
+    </div>
+  </div>
+</div>
