@@ -28,9 +28,12 @@ class LocationsController < ApplicationController
 
                 # The code below works and can add site to DB only if geocoded_by :address is commented out in models>location.rb
                 # Has something to do with this: http://www.rubydoc.info/github/alexreisner/geocoder/master/frames#Forward_and_Reverse_Geocoding_in_the_Same_Model
-
                 @location = Location.create(reverse_geocoded_address)
-                redirect_to locations_path
+
+                # Returns all locations in the database within 1 mile of newly created location (first object in array is the newly created site itself)
+                nearby_locations = Location.near((@location), 1)
+                render json: nearby_locations
+                # redirect_to locations_path
 
             end
         else
@@ -43,10 +46,14 @@ class LocationsController < ApplicationController
                 #IF it's an existing location, we should add photo to existing MapFlag
                 render json: existing_location
             else
-                #IF it's not an existing location, create a new MapFlag and attach image
+                # IF it's not an existing location, create a new MapFlag and attach image
                 # render json: address_hash
                 @location = Location.create(address_hash)
-                redirect_to locations_path
+
+                # Returns all locations in the database within 1 mile of newly created location (first object in array is the newly created site itself)
+                nearby_locations = Location.near((@location), 1)
+                render json: nearby_locations
+                # redirect_to locations_path
             end
         end
     end
@@ -79,6 +86,8 @@ class LocationsController < ApplicationController
 
     def address_hash
         form_entry_hash = {
+            "name" => params[:location][:name],
+            "desc" => params[:location][:desc],
             "address_street" => params[:location][:address_street],
             "address_city" => params[:location][:address_city],
             "address_state" => params[:location][:address_state],
@@ -94,6 +103,8 @@ class LocationsController < ApplicationController
         address_array = Geocoder.search(@lat_long_string)
         first_match = address_array.first
         parsed_address_hash = {
+            "name" => params[:location][:name],
+            "desc" => params[:location][:desc],
             "address_street" => first_match.street_number+" "+first_match.route,
             "address_city" => first_match.city,
             "address_state" => first_match.state_code,
