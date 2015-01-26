@@ -79,8 +79,8 @@ class LocationsController < ApplicationController
             "address_state" => params[:location][:address_state],
             "address_zip" => params[:location][:address_zip],
             "address_country" => params[:location][:address_country],
-            "latitude" => @lat_long_array[0]
-            # "longitude" => @lat_long_array[1]
+            "latitude" => @lat_long_array[0],
+            "longitude" => @lat_long_array[1]
             #one or other of lat and long works, but with both it breaks...WHY???
         }
     end
@@ -93,7 +93,9 @@ class LocationsController < ApplicationController
             "address_city" => first_match.city,
             "address_state" => first_match.state_code,
             "address_zip" => first_match.postal_code,
-            "address_country" => first_match.country_code
+            "address_country" => first_match.country_code,
+            "latitude" => first_match.latitude,
+            "longitude" => first_match.longitude
 
             # TRIED BELOW FOR LAT/LONG... Needs fixing
             # "latitude" => first_match.lat,
