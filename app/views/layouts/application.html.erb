@@ -11,6 +11,7 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery.js"></script>
 
+
 </head>
 <body>
 
@@ -18,14 +19,14 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="page-header">
-          
+
           <h1><%= link_to "SeahawkCity", root_path %> <small>We&nbsp;are&nbsp;all&nbsp;12</small></h1>
 
           <% if @current_user %>
             <p><%= link_to @current_user.user_name, profile_path %></p>
             <%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %>
           <% else %>
-            <%= link_to "Login", login_path, :class => "btn btn-primary" %>   
+            <%= link_to "Login", login_path, :class => "btn btn-primary" %>
           <% end %>
 
         </div>
