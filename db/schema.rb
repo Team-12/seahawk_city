@@ -11,14 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126004951) do
+ActiveRecord::Schema.define(version: 20150126024506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "checkins", force: :cascade do |t|
-    t.string   "latitude"
-    t.string   "longitude"
     t.text     "note"
     t.string   "photo_url"
     t.integer  "checkinable_id"
@@ -26,6 +24,8 @@ ActiveRecord::Schema.define(version: 20150126004951) do
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "checkins", ["checkinable_type", "checkinable_id"], name: "index_checkins_on_checkinable_type_and_checkinable_id", using: :btree
