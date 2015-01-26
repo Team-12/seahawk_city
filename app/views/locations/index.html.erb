@@ -1,5 +1,3 @@
-For testing, displaying list of sites:
-
 <!-- Should be able to replace lines below with this in erb tags: "render 'partials/mapping_api_links'" -->
 <%= javascript_include_tag "//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" %>
 <%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
@@ -45,13 +43,36 @@ For testing, displaying list of sites:
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
-
 <script>
+<% if @user %>
   handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
+  handler.buildMap({
+   provider: {
+    zoom: 16
+   },
+   internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>,
+        {animation: google.maps.Animation.DROP}
+      );
+    // dont need the below 2 lines as I am forcing the map to center on Seattle, line 60
+    //handler.bounds.extendWith(markers);
+    //handler.fitMapToBounds();
+    handler.map.centerOn({lat:<%= @recent_checkin.latitude %>, lng: <%= @recent_checkin.longitude %>});
   });
+<% else %>
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+   provider: {
+    zoom: 11
+   },
+   internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>,
+        {animation: google.maps.Animation.DROP}
+      );
+    // dont need the below 2 lines as I am forcing the map to center on Seattle, line 60
+    //handler.bounds.extendWith(markers);
+    //handler.fitMapToBounds();
+    handler.map.centerOn({lat: 47.6097, lng: -122.3331});
+  });
+<% end %>
 </script>

@@ -1,10 +1,15 @@
 class LocationsController < ApplicationController
 
     def index
+        @user = current_user
+        #made up html5 api gps static location
+        @recent_checkin = Location.order("created_at").last
+        @user_pin = [47.62326,-122.33025]
         @locations = Location.all
         @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
             marker.lat location.latitude
             marker.lng location.longitude
+            marker.infowindow location.address
         end
     end
 
