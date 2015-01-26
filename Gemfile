@@ -55,3 +55,5 @@ end
 ### Non-grouped, non-default gems go here:
 gem 'bootstrap_form'
 gem 'geocoder'
+gem 'underscore-rails'
+gem 'gmaps4rails'
