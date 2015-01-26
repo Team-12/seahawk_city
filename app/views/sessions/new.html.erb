@@ -1,11 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1>Login to SeahawkCity</h1>
+      <h1>Login</h1>
+
+      <% if @user.errors.any? %>
+          <% @user.errors.full_messages.each do |error| %>
+              <div class="alert alert-danger"><%= error %></div>
+          <% end %>
+      <% end %>
+
       <%= bootstrap_form_for :user do |f| %> 
         <%= f.text_field :email, placeholder: "Enter your email" %>
         <%= f.password_field :password, placeholder: "Enter your password" %>
-        <%= f.submit "Login" %>  
+        <%= f.submit "Login", :class => "btn btn-primary" %> or <%= link_to "Sign up", signup_path %>   
+
       <% end %> 
     </div>
   </div>
