@@ -1,4 +1,3 @@
-
 class LocationsController < ApplicationController
 
     def index
