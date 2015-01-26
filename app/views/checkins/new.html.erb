@@ -3,6 +3,10 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h1>New Check-in Page</h1>
       <hr>
+      <h3>Upload Image</h3>
+      <%= bootstrap_form_for :checkin do |f| %> 
+        <input type="file" accept="image/*" capture="camera">
+      <% end %> 
       <hr>
       <h4>Dev Notes</h4>
       <ul>
