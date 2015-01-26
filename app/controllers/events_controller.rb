@@ -12,7 +12,10 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by_id(params[:id])
+    # TODO: Switch this line for the one below when ready to use real param value
+    @event = Event.first
+    # @event = Event.find_by_id(params[:id])
+    # return render json: @event
     if @event
       # Display page
       render :show

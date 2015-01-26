@@ -42,7 +42,8 @@ users = User.create([
 
 # Six Locations
 locations = Location.create([
-          { latitude: "47.6204",
+          { user_id: 1,
+            latitude: "47.6204",
             longitude: "-122.3491",
             name: "Space Needle",
             desc: "Iconic Seattle Landmark",
@@ -50,9 +51,10 @@ locations = Location.create([
             address_city: "Seattle",
             address_state: "WA",
             address_zip: "98109",
-            address_country: "USA",
+            address_country: "USA"
           },
-          { latitude: "47.6073",
+          { user_id: 1,
+            latitude: "47.6073",
             longitude: "-122.3491",
             name: "Russell Investments Center",
             desc: "No relation to the quarterback (we think)",
@@ -60,7 +62,7 @@ locations = Location.create([
             address_city: "Seattle",
             address_state: "WA",
             address_zip: "98101",
-            address_country: "USA",
+            address_country: "USA"
           },
           { latitude: nil,
             longitude: nil,
@@ -70,7 +72,7 @@ locations = Location.create([
             address_city: "Seattle",
             address_state: "WA",
             address_zip: "98104",
-            address_country: "USA",
+            address_country: "USA"
           },
           { latitude: nil,
             longitude: nil,
@@ -80,7 +82,7 @@ locations = Location.create([
             address_city: "Seattle",
             address_state: "WA",
             address_zip: "98109",
-            address_country: "USA",
+            address_country: "USA"
           },
           { latitude: "47.620035",
             longitude: "-122.329631",
@@ -90,12 +92,22 @@ locations = Location.create([
             address_city: "Seattle",
             address_state: "WA",
             address_zip: "98109",
-            address_country: "USA",
+            address_country: "USA"
           }
         ])
 
 # Six Events
-# events = Event.create([])
+events = Event.create([
+          { user_id: User.first.id,
+            location_id: Location.first.id,
+            name: "VIP Super Bowl Party",
+            desc: "You WISH you could get in.",
+            date: "2015/02/01",
+            start_time: "12:00",
+            end_time: "8:00",
+            photo_url: "http://img.scoop.it/MXyuXr6skFBcOBE45TuYnDl72eJkfbmt4t8yenImKBVvK0kTmF0xjctABnaLJIm9"
+          }
+        ])
 
 # ?? Checkins
 # checkins = Checkin.create([])
