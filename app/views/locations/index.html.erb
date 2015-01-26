@@ -1,6 +1,9 @@
 For testing, displaying list of sites:
 
-<%= render "partials/mapping_api_links" %> 
+<!-- Should be able to replace lines below with this in erb tags: "render 'partials/mapping_api_links'" -->
+<%= javascript_include_tag "//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" %>
+<%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
+
 
 <table class="table">
   <tr>
