@@ -1,5 +1,7 @@
 For testing, displaying list of sites:
 
+<% render "partials/mapping_api_links" %> 
+
 <table class="table">
   <tr>
     <th> Name </th>
@@ -35,7 +37,6 @@ For testing, displaying list of sites:
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
-<% render "partials/mapping_api_links" %> 
 
 <script>
 handler = Gmaps.build('Google');
