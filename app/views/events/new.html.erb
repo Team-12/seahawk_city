@@ -1,1 +1,17 @@
-<h1>New Event</h1>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1>New Event Page</h1>
+    <h3>Navigate to: <%= link_to "Events", events_path %></h3><br>
+      <%= bootstrap_form_for(@event) do |f| %>
+        <h3>Upload Image</h3><%= f.file_field :photo %>
+        <%= f.text_field :name, :placeholder => "Event Title" %>
+        <%= f.text_field :desc, :placeholder => "Description"%>
+        <%= f.text_field :date, :placeholder => "Date"%>
+        <%= f.text_field :start_time, :placeholder => "Start Time" %>
+        <%= f.text_field :end_time, :placeholder => "End Time" %>
+        <%= f.submit :class => "btn btn-primary" %>
+      <% end %>
+  </div>
+</div>
+
+
