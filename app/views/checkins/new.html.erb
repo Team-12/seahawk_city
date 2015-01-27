@@ -3,6 +3,13 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h1>New Check-in Page</h1>
       <hr>
+      <div id="nearby">
+        <ul>
+          <% @nearby.each do |n| %>
+            <li> <%= n.inspect %> </li>
+          <% end %>
+        </ul>
+      </div>
       <h3>Upload Image</h3>
       <%= bootstrap_form_for @checkin do |f| %>
         <%= f.file_field :photo %>
@@ -20,7 +27,7 @@
             <%= locations_form.text_field :name, :label => "Location Name" %>
             <%= locations_form.text_field :desc, :label => "Description" %>
             <%= locations_form.text_field :address_street, :label => "Street Address" %>
-             <%= locations_form.text_field :address_city, :label => "City" %>
+            <%= locations_form.text_field :address_city, :label => "City" %>
             <%= locations_form.text_field :address_state, :label => "State" %>
             <%= locations_form.text_field :address_zip, :label => "Zip" %>
             <%= locations_form.text_field :address_country, :label => "Country" %>

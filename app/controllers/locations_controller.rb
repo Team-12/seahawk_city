@@ -66,6 +66,9 @@
     end
 
     def nearby
+        @location = params[:latitude] + ", " + params[:longitude]
+        render json: nearby_locations
+
     end
 
     def edit
