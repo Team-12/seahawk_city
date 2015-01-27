@@ -24,10 +24,16 @@ Rails.application.routes.draw do
   get 'edit/profile' => 'users#edit_profile', as: :edit_profile
   patch 'profile' => 'users#update_profile', as: :update_profile
 
+  #events
+  get 'events/new/:locationid' => 'events#new', as: :new_event
+
+  resources :events, only: [:index, :show, :create, :edit, :destroy, :update]
+
+
   # Example resource route (maps HTTP verbs to controller actions automatically):
 
     resources :locations
-    resources :events
+
     resources :checkins
 
   # Example resource route with options:
