@@ -1,0 +1,18 @@
+development:
+  cloud_name: justwyoming-com
+  api_key: '272964572993666'
+  api_secret: KNY4tsLlGAmcsfUnF4IiBdkxMdw
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: justwyoming-com
+  api_key: '272964572993666'
+  api_secret: KNY4tsLlGAmcsfUnF4IiBdkxMdw
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: justwyoming-com
+  api_key: '272964572993666'
+  api_secret: KNY4tsLlGAmcsfUnF4IiBdkxMdw
+  enhance_image_tag: true
+  static_image_support: false

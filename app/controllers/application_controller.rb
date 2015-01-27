@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def capture_image new_photo_path
+    Cloudinary::Uploader.upload(new_photo_path)
+  end
+
+
+
+
 end

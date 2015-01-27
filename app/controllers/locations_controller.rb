@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
 
+
     def index
         @user = current_user
         #made up html5 api gps static location
@@ -11,6 +12,7 @@ class LocationsController < ApplicationController
             marker.lng location.longitude
             marker.infowindow location.address
         end
+
     end
 
     def new
@@ -164,6 +166,10 @@ class LocationsController < ApplicationController
             "address" => params[:location][:address]
         }
     end
+
+
+
+
 
 end
 
