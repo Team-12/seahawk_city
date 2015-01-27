@@ -11,6 +11,9 @@ class EventsController < ApplicationController
   def create
   end
 
+  def nearby
+  end
+
   def show
     # TODO: Switch this line for the one below when ready to use real param value
     @event = Event.first
