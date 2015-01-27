@@ -6,6 +6,9 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    if @current_user.is_business_owner == false
+      redirect_to profile_path
+    end
   end
 
   def create

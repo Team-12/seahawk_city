@@ -12,25 +12,29 @@
       <% end %>
       <hr>
 
-      <h3>Your Registered Locations</h3>
-      <% if @locations %>
+      <% if @current_user.is_business_owner == true %>
+        <%= link_to "Put Your Business On The Map!", new_location_path, :class => "btn btn-primary" %>
+      <% end %>
+
+
+      <% if @current_user.locations.any? %>
+        <h3>Your Registered Locations</h3>
         <ul>
-        <% @locations.each do %>
-          <li>Fake Location...</li>
+        <% @current_user.locations.each do |location| %>
+          <li><h4><%= location.name %></h4><%= link_to "+", new_event_path, :class => "btn btn-primary btn-xs"  %></li>
         <% end %>
         </ul>
-      <% else %>
-        <%= link_to "Put Your Business On The Map!", new_location_path %>
       <% end %>
       <hr>
 
-      <h3>Your Checkins</h3>
-      <% if @checkins %>
+
+      <% if @current_user.checkins.any? %>
+        <h3>Your Checkins</h3>
         # NOTE: Should sort/group these checkin type (new, exiting, event)
         <ul>
-        <% @checkins.each do %>
-          <li>Fake Checkin...</li>
-        <% end %>
+        <% @current_user.checkins.each do |checkin| %>
+          <li><h4>You checked in to a: <%= checkin.checkinable_type %></h4><%= link_to "Details", new_event_path, :class => "btn btn-primary btn-xs"  %></li>
+      <% end %>
         </ul>
       <% else %>
         <p>You have no checkins. :-(</p>
