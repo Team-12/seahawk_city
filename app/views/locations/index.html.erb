@@ -22,20 +22,20 @@ For testing, displaying list of sites:
     <th> Updated </th>
   </tr>
   <% @locations.each do |location| %>
-    <tr>
-      <td> <%= location.address %> </td>
-      <td> <%= location.name %> </td>
-      <td> <%= location.desc %> </td>
-      <td> <%= location.latitude %> </td>
-      <td> <%= location.longitude %> </td>
-      <td> <%= location.address_street %> </td>
-      <td> <%= location.address_city %> </td>
-      <td> <%= location.address_state %> </td>
-      <td> <%= location.address_zip %> </td>
-      <td> <%= location.address_country %> </td>
-      <td> <%= location.created_at %> </td>
-      <td> <%= location.updated_at %> </td>
-    </tr>
+  <tr>
+    <td> <%= location.address %> </td>
+    <td> <%= location.name %> </td>
+    <td> <%= location.desc %> </td>
+    <td> <%= location.latitude %> </td>
+    <td> <%= location.longitude %> </td>
+    <td> <%= location.address_street %> </td>
+    <td> <%= location.address_city %> </td>
+    <td> <%= location.address_state %> </td>
+    <td> <%= location.address_zip %> </td>
+    <td> <%= location.address_country %> </td>
+    <td> <%= location.created_at %> </td>
+    <td> <%= location.updated_at %> </td>
+  </tr>
   <% end %>
 </table>
 
@@ -44,35 +44,27 @@ For testing, displaying list of sites:
 </div>
 
 <script>
-<% if @user %>
-  handler = Gmaps.build('Google');
-  handler.buildMap({
-   provider: {
-    zoom: 16
-   },
-   internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>,
-        {animation: google.maps.Animation.DROP}
-      );
-    // dont need the below 2 lines as I am forcing the map to center on Seattle, line 60
-    //handler.bounds.extendWith(markers);
-    //handler.fitMapToBounds();
-    handler.map.centerOn({lat:<%= @recent_checkin.latitude %>, lng: <%= @recent_checkin.longitude %>});
-  });
-<% else %>
-  handler = Gmaps.build('Google');
-  handler.buildMap({
-   provider: {
-    zoom: 11
-   },
-   internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>,
-        {animation: google.maps.Animation.DROP}
-      );
-    // dont need the below 2 lines as I am forcing the map to center on Seattle, line 60
-    //handler.bounds.extendWith(markers);
-    //handler.fitMapToBounds();
-    handler.map.centerOn({lat: 47.6097, lng: -122.3331});
-  });
-<% end %>
+
+  <% if @current_user && @current_user.checkins.any? %>
+    var mapOptions={
+      center:[<%= @last_user_checkin.latitude %>,<%= @last_user_checkin.longitude %>],
+      zoom:16,
+      markers:<%=raw @hash.to_json %>
+    }
+  <% elsif @current_user %>
+    var mapOptions={
+      center:[<%= @user_pin[0] %>,<%= @user_pin[1] %>],
+      zoom:16,
+      markers:<%=raw @hash.to_json %>
+    }
+  <% else %>
+    var mapOptions={
+      center:[47.6097,-122.3331],
+      zoom:11,
+      markers:<%=raw @hash.to_json %>
+    }
+  <% end %>
+
+drawMap(mapOptions);
+
 </script>
