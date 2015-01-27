@@ -24,6 +24,12 @@ Rails.application.routes.draw do
   get 'edit/profile' => 'users#edit_profile', as: :edit_profile
   patch 'profile' => 'users#update_profile', as: :update_profile
 
+  #locations
+  get 'locations/nearby/:latitude/:longitude' => 'locations#nearby', as: :nearby_locations
+
+  #events
+  get 'events/nearby/:latitude/:longitude' => 'events#nearby', as: :nearby_events
+
   # Example resource route (maps HTTP verbs to controller actions automatically):
 
     resources :locations
