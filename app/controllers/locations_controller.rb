@@ -1,12 +1,14 @@
 
 class LocationsController < ApplicationController
 
+
     def index
         @locations = Location.all
         @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
             marker.lat location.latitude
             marker.lng location.longitude
         end
+
     end
 
     def new
@@ -124,6 +126,10 @@ class LocationsController < ApplicationController
         # render json: street+", "+city+", "+state+", "+zip+", "+country
         # render json: parsed_address_hash
     end
+
+
+
+
 
 end
 

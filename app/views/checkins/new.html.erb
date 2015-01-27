@@ -3,13 +3,22 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h1>New Check-in Page</h1>
       <hr>
+      <%= bootstrap_form_for @checkin do |f| %>
+      <%= f.file_field :photo %>
+      <%= f.text_area :note, placeholder: "enter a description" %>
+      <%= f.hidden_field :latitude, value: "1", id: "lat_field" %>
+      <%= f.hidden_field :longitude, value: "2", id: "long_field" %>
+       <%= f.submit "Submit Flag", id: "checkin_submit", disabled: true %>
+      <% end %>
       <hr>
       <h4>Dev Notes</h4>
       <ul>
         <li>Not 100% sure EXACTLY what this process looks like yet.</li>
         <li>But it's critical that we get this part right.</li>
       </ul>
-      
+
+
+
     </div>
   </div>
 </div>
