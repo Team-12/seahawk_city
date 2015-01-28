@@ -6,8 +6,8 @@ $(function(){
     var checkin_link = $("#checkin_link")
 
     var setFormLatLong = function(position){
-        longitude = position.coords.latitude
-        latitude = position.coords.longitude
+        latitude = position.coords.latitude
+        longitude = position.coords.longitude
         console.log(position.coords);
         if(latField.length > 0 && longField.length > 0){
             latField.val(latitude);
