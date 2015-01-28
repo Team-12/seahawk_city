@@ -2,7 +2,8 @@ var drawMap = function(mapOptions){
   var handler = Gmaps.build('Google');
   handler.buildMap({
    provider: {
-    zoom: mapOptions.zoom
+    zoom: mapOptions.zoom,
+    scrollwheel: false
   },
   internal: {id: 'map'}}, function(){
     markers = handler.addMarkers(mapOptions.markers,
