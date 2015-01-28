@@ -1,48 +1,41 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h1>New Check-in Page</h1>
-      <hr>
-      <div id="nearby">
-        <h3>Nearby</h3>
-        <ul class="list-group">
-          <% @nearby.each do |n| %>
-            <li class="list-group-item nearby-location"> <%= n.name %> </li>
-          <% end %>
-        </ul>
-      </div>
-      <h3>Upload Image</h3>
+      <h3>1. Take a Picture!</h3>
       <%= bootstrap_form_for @checkin do |f| %>
-        <%= f.file_field :photo %>
-        <!-- Above line should work same as below line -->
-        <!-- <input type="file" accept="image/*" capture="camera"> -->
-        <%= f.text_field :checkinable_id %>
-        <%= f.text_field :checkinable_type %>
-        <%= f.text_area :note, placeholder: "enter a description" %>
+        <%= f.file_field :photo, hide_label: :true %>
+        <%= f.hidden_field :checkinable_id, :id => "c_id", :label => "Checkinable ID" %>
+        <%= f.hidden_field :checkinable_type, :id => "c_type" %>
         <%= f.hidden_field :latitude, value: params[:latitude], id: "lat_field" %>
         <%= f.hidden_field :longitude, value: params[:longitude], id: "long_field" %>
+      <div id="nearby">
+      <hr>
+        <h3>2. Where Is This?</h3>
+        <ul class="list-group">
+          <% @nearby.each do |n| %>
+            <li class="list-group-item nearby-location" data-id="<%= n.id %>" data-type="location"> <%= n.name %> </li>
+          <% end %>
+          <h4><a href="#" id="noneOfTheAbove">None of the Above</a></h4>
+        </ul>
         <!-- nested form-->
         <div id="newLocation">
           <%= f.fields_for :locations do |locations_form| %>
 
-            <%= locations_form.text_field :name, :label => "Location Name" %>
-            <%= locations_form.text_field :desc, :label => "Description" %>
-            <%= locations_form.text_field :address_street, :label => "Street Address" %>
-            <%= locations_form.text_field :address_city, :label => "City" %>
-            <%= locations_form.text_field :address_state, :label => "State" %>
-            <%= locations_form.text_field :address_zip, :label => "Zip" %>
-            <%= locations_form.text_field :address_country, :label => "Country" %>
-            <%= locations_form.text_field :latitude, :label => "Latitude" %>
-            <%= locations_form.text_field :longitude, :label => "Longitude" %>
+            <%= locations_form.text_field :name, :label => "Location Address or Description", :placeholder => "(ex: 'Space Needle', '123 Pike St.)" %>
+            <%# locations_form.text_field :desc, :label => "Description" %>
+            <%# locations_form.text_field :address_street, :label => "Street Address" %>
+            <%# locations_form.text_field :address_city, :label => "City" %>
+            <%# locations_form.text_field :address_state, :label => "State" %>
+            <%# locations_form.text_field :address_zip, :label => "Zip" %>
+            <%# locations_form.text_field :address_country, :label => "Country" %>
+            <%# locations_form.text_field :latitude, :label => "Latitude" %>
+            <%# locations_form.text_field :longitude, :label => "Longitude" %>
           <% end %>
         </div>
-
-        <%= f.submit "Submit Flag", id: "checkin_submit" %>
+        <hr>
+        <h3>Tell Us More</h3>
+        <%= f.text_area :note, placeholder: "enter a description", hide_label: :true %>
+        <%= f.submit "Submit", id: "checkin_submit" %>
       <% end %>
-      <hr>
-      <h4>Dev Notes</h4>
-      <ul>
-        <li>Not 100% sure EXACTLY what this process looks like yet.</li>
-        <li>But it's critical that we get this part right.</li>
-      </ul>
     </div>
   </div>
+</div>
