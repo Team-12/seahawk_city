@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>SeahawkCity</title>
-
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" %>
+<%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
   <!-- Bootstrap/jQuery -->
@@ -34,7 +35,7 @@
            %>
             <% if @current_user %>
               <p><%= link_to @current_user.user_name, profile_path %></p>
-              <%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %>
+              <%= button_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete, :class => "btn btn-primary" %>
             <% else %>
               <%= link_to "Login", login_path, :class => "btn btn-primary" %>
               <%= link_to "Sign up", signup_path %>

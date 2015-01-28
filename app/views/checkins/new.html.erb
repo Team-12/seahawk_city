@@ -1,12 +1,12 @@
-
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h1>New Check-in Page</h1>
       <hr>
       <div id="nearby">
-        <ul>
+        <h3>Nearby</h3>
+        <ul class="list-group">
           <% @nearby.each do |n| %>
-            <li> <%= n.inspect %> </li>
+            <li class="list-group-item nearby-location"> <%= n.name %> </li>
           <% end %>
         </ul>
       </div>
@@ -18,8 +18,8 @@
         <%= f.text_field :checkinable_id %>
         <%= f.text_field :checkinable_type %>
         <%= f.text_area :note, placeholder: "enter a description" %>
-        <%= f.hidden_field :latitude, value: "1", id: "lat_field" %>
-        <%= f.hidden_field :longitude, value: "2", id: "long_field" %>
+        <%= f.hidden_field :latitude, value: params[:latitude], id: "lat_field" %>
+        <%= f.hidden_field :longitude, value: params[:longitude], id: "long_field" %>
         <!-- nested form-->
         <div id="newLocation">
           <%= f.fields_for :locations do |locations_form| %>

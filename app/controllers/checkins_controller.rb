@@ -7,6 +7,14 @@ class CheckinsController < ApplicationController
 
     def new
         @checkin = Checkin.new
+        # @nearby = Location.all
+        # @nearby = [];
+        if params[:latitude] && params[:longitude]
+            @nearby = Location.near("#{params[:latitude]}, #{params[:longitude]}", 1)
+        else
+            @nearby = Location.near("Seattle,WA")
+        end
+
     end
 
     def create
