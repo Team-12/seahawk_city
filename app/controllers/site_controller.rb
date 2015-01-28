@@ -16,6 +16,7 @@ class SiteController < ApplicationController
             "width" => 32,
             "height" => 32
             })
+
     end
   end
 
