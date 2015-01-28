@@ -1,9 +1,29 @@
+<div>
 
-  <!-- <div><h1>This is a test to see if you can see this.</h1>
-    <img src="http://i.imgur.com/QL2gRQv.jpg">
-  </div> -->
-  <%= object.inspect %>
+  <ul>
+    <% if object.instance_of?(Event) %>
+      <li><h5>Title: <%= object.name %></h5></li>
+      <li><h5>Date: <%= object.date %></h5></li>
+      <li><h5>Start Time: <%= object.start_time %>. End Time: <%= object.end_time %></h5></li>
+      <li><p>Details: <%= object.desc %></p></li>
+      <h5>Images</h5>
+      <%= cl_image_tag(object.photo_url, :width => 100, :height => 100, :crop => :fill) %>
+      <% if object.checkins.any? %>
+        <%= cl_image_tag(object.checkins[0].photo_url, :width => 100, :height => 100, :crop => :fill) %>
+      <% end %>
+    <% end %>
 
+    <% if object.instance_of?(Location) %>
+      <li><h5>Title: <%= object.name %></h5></li>
+      <li><h5>Address: <%= object.address %></h5></li>
+      <li><p>Details: <%= object.desc %></p></li>
+      <% if object.checkins.any? %>
+        <h5>Images</h5>
+        <%= cl_image_tag(object.checkins[0].photo_url, :width => 100, :height => 100, :crop => :fill) %>
+      <% end %>
+    <% end %>
+  </ul>
 
+</div>
 
 
