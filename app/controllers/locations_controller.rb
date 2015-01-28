@@ -1,27 +1,13 @@
 class LocationsController < ApplicationController
 
   def index
-      #made up html5 api gps static location
-      @user_pin = [47.62326,-122.33025]
-      @last_user_checkin = Checkin.order("created_at").last
-      @locations = Location.all
-      @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
-          marker.lat location.latitude
-          marker.lng location.longitude
-          #marker.infowindow gmaps4rails_infowindow
-          marker.infowindow render_to_string(:partial => "/partials/marker", :locals => { :object => location })
-          marker.picture({
-              "url" => "https://s3.amazonaws.com/uploads.hipchat.com/39979/1426756/Gyhorx6vyPkjyto/12flags_blue.png",
-              "width" => 32,
-              "height" => 32
-              })
-      end
+    #ALL CODE MOVED TO SITE CONTROLLER
   end
 
-  def gmaps4rails_infowindow
-    "<img src=\'http://i.imgur.com/QL2gRQv.jpg\'>"
+  # def gmaps4rails_infowindow - METHOD TO POPULATE THE INFO WINDOW, NOT BEING USED ANYMORE
+  #   "<img src=\'http://i.imgur.com/QL2gRQv.jpg\'>"
 
-  end
+  # end
 
   def new
       @location = Location.new
