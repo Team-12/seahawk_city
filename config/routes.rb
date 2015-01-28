@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show, :create, :edit, :destroy, :update]
 
   # locations
-  get 'locations/nearby/:latitude/:longitude' => 'locations#nearby', as: :nearby_locations
+  get 'locations/nearby' => 'locations#nearby', as: :nearby_locations
   resources :locations
 
   # checkins
