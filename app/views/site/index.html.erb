@@ -1,15 +1,11 @@
-
+<div class="container" style="width: 100%">
   <div class="row">
     <div class="col-xs-12 col-md-12">
-      <h2>Map Section</h2>
       <!-- map -->
       <div style='width: 100%;'>
         <div id="map" style='width: 100%; height: 400px;'></div>
       </div>
       <!-- end map -->
-      <ul>
-        <li><%= link_to "Fake Location", "locations/1" %></li>
-      </ul>
       <br><%= link_to "Checkin", new_checkin_path, :class => "btn btn-primary", :id => "checkin_link" %>
     </div>
   </div>
@@ -23,37 +19,32 @@
       </ul>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-xs-12 col-md-12">
-    <br><p>Development Notes:</p>
-      <ul>
-        <li>&check; Wire up current user display to profile route</li>
-        <li>&check; Display fake marker link</li>
-        <li>&check; Wire up fake marker data to location route</li>
-        <li>&check; Display fake event link</li>
-        <li>&check; Wire up fake event data to event route</li>
-        <li>&check; Create "Checkin" button</li>
-        <li>&check; Wire up "Checkin" button to new_checkin route</li>
-        <li>Create fake marker seed data</li>
-        <li>Create fake event seed data</li>
-        <li>Populate db with seed data</li>
-        <li>Replace fake links with seed data for both markers and events</li>
-        <li>Replace list of markers with actual map display</li>
-      </ul>
-    </div>
-  </div>
-
+</div>
 
 <script>
 
 $(function() {
-
+  <% if @current_user && @current_user.checkins.any? %>
     var mapOptions={
-      center:[latitude,longitude],
-      zoom:11 
+      center:[<%= @last_user_checkin.latitude %>,<%= @last_user_checkin.longitude %>],
+      zoom:16,
+      markers:<%=raw @hash.to_json %>
     }
-  
+  <% elsif @current_user %>
+    var mapOptions={
+      center:[<%= @user_pin[0] %>,<%= @user_pin[1] %>],
+      zoom:16,
+      markers:<%=raw @hash.to_json %>
+    }
+  <% else %>
+    var mapOptions={
+      center:[47.6097,-122.3331],
+      zoom:11,
+      markers:<%=raw @hash.to_json %>
+    }
+  <% end %>
+
+
   drawMap(mapOptions);
 
 })
