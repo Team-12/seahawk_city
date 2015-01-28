@@ -8,9 +8,27 @@
         <%= f.file_field :photo %>
         <!-- Above line should work same as below line -->
         <!-- <input type="file" accept="image/*" capture="camera"> -->
+        <%= f.text_field :checkinable_id %>
+        <%= f.text_field :checkinable_type %>
         <%= f.text_area :note, placeholder: "enter a description" %>
         <%= f.hidden_field :latitude, value: "1", id: "lat_field" %>
         <%= f.hidden_field :longitude, value: "2", id: "long_field" %>
+        <!-- nested form-->
+        <div id="newLocation">
+          <%= f.fields_for :locations do |locations_form| %>
+
+            <%= locations_form.text_field :name, :label => "Location Name" %>
+            <%= locations_form.text_field :desc, :label => "Description" %>
+            <%= locations_form.text_field :address_street, :label => "Street Address" %>
+             <%= locations_form.text_field :address_city, :label => "City" %>
+            <%= locations_form.text_field :address_state, :label => "State" %>
+            <%= locations_form.text_field :address_zip, :label => "Zip" %>
+            <%= locations_form.text_field :address_country, :label => "Country" %>
+            <%= locations_form.text_field :latitude, :label => "Latitude" %>
+            <%= locations_form.text_field :longitude, :label => "Longitude" %>
+          <% end %>
+        </div>
+
         <%= f.submit "Submit Flag", id: "checkin_submit", disabled: true %>
       <% end %>
       <hr>
@@ -21,4 +39,3 @@
       </ul>
     </div>
   </div>
-

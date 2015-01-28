@@ -1,6 +1,5 @@
     class LocationsController < ApplicationController
 
-
     def index
         #made up html5 api gps static location
         @user_pin = [47.62326,-122.33025]
@@ -17,8 +16,8 @@
                 "height" => 32
                 })
         end
-
     end
+
     def gmaps4rails_infowindow
       "<img src=\'http://i.imgur.com/QL2gRQv.jpg\'>"
 
@@ -28,73 +27,45 @@
         @location = Location.new
     end
 
-
     def create
         #If Search Field is filled in...
-        if params[:location][:address]
-            #GEOCODE BY ADDRESS to Get Longitude & Latitude
-            #AND REVERSE-GEOCODE on Result to keep data normalized
-            @lat_long_array = Geocoder.coordinates(address)
-            latitude = @lat_long_array[0].to_s
-            longitude = @lat_long_array[1].to_s
-            @lat_long_string = latitude + ", " + longitude
-            existing_location = Location.find_by_latitude_and_longitude(latitude, longitude)
-                if existing_location
-                    #IF it's an existing location, we should add photo to existing MapFlag
-                    render json: existing_location
+        if params[:location][:address] != ""
+            geo_and_reverse
+                if @existing_location
+                    render json: @existing_location
                 else
-                    #IF it's not an existing location, create a new MapFlag and attach image
-                    # render json: address_hash
+                    #IF it's not an existing location
                     @location = Location.create(search_address_hash)
-
-                    #Returns all locations in the database within 1 mile of newly created location (first object in array is the newly created site itself)
-                    nearby_locations = Location.near((@location), 1)
                     render json: nearby_locations
-                    # redirect_to locations_path
                 end
         else
+            #If Longitude and Latitude are both available
             if (params[:location][:latitude] != "") and (params[:location][:longitude] != "")
-                #REVERSE-GEOCODE to Get Address Details
-                existing_location = Location.find_by_latitude_and_longitude(params[:location][:latitude],params[:location][:longitude])
-                if existing_location
-                    #IF it's an existing location, we should add photo to existing MapFlag
+                geo_by_lat_long
+                if @existing_location
                     redirect_to new_location_path
                 else
-                    #IF it's not an existing location, create a new MapFlag and attach image
-                    @lat_long_string = params[:location][:latitude]+", "+params[:location][:longitude]
-                    #Return reverse_geocoded_address
-                    @location = Location.create(reverse_geocoded_address)
-
-                    #Returns all locations in the database within 1 mile of newly created location (first object in array is the newly created site itself)
-                    nearby_locations = Location.near((@location), 1)
+                    #REVERSE-GEOCODE to Get Address Details
+                    @location = Location.create(reverse_geocoded_address_hash)
                     render json: nearby_locations
-                    # redirect_to locations_path
-
                 end
             else
-                #GEOCODE BY ADDRESS to Get Longitude & Latitude
-                @lat_long_array = Geocoder.coordinates(address)
-                latitude = @lat_long_array[0]
-                longitude = @lat_long_array[1]
-                existing_location = Location.find_by_latitude_and_longitude(latitude, longitude)
+                #If longitude and/or latitude are not available, use address form
+                geo_and_reverse
                 if existing_location
-                    #IF it's an existing location, we should add photo to existing MapFlag
                     render json: existing_location
                 else
-                    # IF it's not an existing location, create a new MapFlag and attach image
-                    # render json: address_hash
                     @location = Location.create(address_hash)
-
-                    # Returns all locations in the database within 1 mile of newly created location (first object in array is the newly created site itself)
-                    nearby_locations = Location.near((@location), 1)
                     render json: nearby_locations
-                    # redirect_to locations_path
                 end
             end
         end
     end
 
     def show
+    end
+
+    def nearby
     end
 
     def edit
@@ -106,11 +77,37 @@
     def destroy
     end
 
+    def geo_and_reverse
+    #GEOCODE BY ADDRESS to Get Longitude & Latitude
+    #AND REVERSE-GEOCODE on Result to keep data normalized
+        @lat_long_array = Geocoder.coordinates(address_string)
+        @latitude = @lat_long_array[0].to_s
+        @longitude = @lat_long_array[1].to_s
+        @lat_long_string = @latitude + ", " + @longitude
+        existing_location
+    end
+
+    def geo_by_lat_long
+        @latitude = params[:location][:latitude]
+        @longitude = params[:location][:longitude]
+        @lat_long_string = @latitude + ", " + @longitude
+        existing_location
+    end
+
+    def existing_location
+            @existing_location = Location.find_by_latitude_and_longitude(@latitude, @longitude)
+    end
+
+    def nearby_locations
+        #Returns all locations in the database within 1 mile
+        @nearby_locations = Location.near((@location), 1)
+    end
+
     def location_params
         params.require(:location).permit(:name,:desc,:longitude,:latitude,:address_street,:address_city,:address_state,:address_zip,:address_country, :address)
     end
 
-    def address
+    def address_string
         street = params[:location][:address_street]
         city = params[:location][:address_city]
         state = params[:location][:address_state]
@@ -159,7 +156,7 @@
         }
     end
 
-    def reverse_geocoded_address
+    def reverse_geocoded_address_hash
         address_array = Geocoder.search(@lat_long_string)
         first_match = address_array.first
         parsed_address_hash = {
@@ -175,10 +172,6 @@
             "address" => params[:location][:address]
         }
     end
-
-
-
-
 
 end
 
