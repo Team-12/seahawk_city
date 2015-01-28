@@ -21,6 +21,7 @@ class SiteController < ApplicationController
             "width" => 32,
             "height" => 32
             })
+
     end
 
        @event_hash = Gmaps4rails.build_markers(@events) do |event, marker|
