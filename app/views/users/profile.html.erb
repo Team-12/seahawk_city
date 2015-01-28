@@ -21,7 +21,7 @@
         <h3>Your Registered Locations</h3>
         <ul>
         <% @current_user.locations.each do |location| %>
-          <li><h4><%= location.name %></h4><%= link_to "+", new_event_path, :class => "btn btn-primary btn-xs"  %></li>
+          <li><h4><%= location.name %></h4><%= link_to "+", "events/new/" + location.id.to_s, :class => "btn btn-primary btn-xs"  %></li>
         <% end %>
         </ul>
       <% end %>
@@ -33,7 +33,7 @@
         # NOTE: Should sort/group these checkin type (new, exiting, event)
         <ul>
         <% @current_user.checkins.each do |checkin| %>
-          <li><h4>You checked in to a: <%= checkin.checkinable_type %></h4><%= link_to "Details", new_event_path, :class => "btn btn-primary btn-xs"  %></li>
+          <li><h4>You checked in to a: <%= checkin.checkinable_type %></h4><%= link_to "Details", "event/" + checkin.checkinable_id.to_s, :class => "btn btn-primary btn-xs"  %></li>
       <% end %>
         </ul>
       <% else %>
