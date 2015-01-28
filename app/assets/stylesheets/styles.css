@@ -1,24 +1,39 @@
 /*  seahawks hex and rgb values
-silver = #a4aaab (164,170,171)
-green = #7cbe24 (124,190,36)
-navy = #0c2243 (12,34,67)
+silver = #A5ACAF (165,172,175)
+green = #69BE28(105,190,40)
+navy = #002244(0,34,68)
 */
-@font-face {
-font-family: 'MkLatinoPlain';
-font-style: normal;
-font-weight: normal;
-src: local('MkLatinoPlain'), url('MkLatinoPlain.woff') format('woff');
+
+body{
+    font-family: 'Play', sans-serif;
+}
+h1, h2, h3 {
+    color: #002244;
+}
+.h1, a{
+    color: #002244;
+}
+.h1, a:hover{
+    color: #A5ACAF;
+}
+h1 small {
+    color: #A5ACAF;
+}
+.btn.btn-primary{
+    background-color: #69BE28;
+    color:#fff;
 }
 
-
-h1 {
-    font-family: 'MkLatinoPlain';
-    font-size: 1.5em;
+a:link{
+    color:#002244;
+}
+a:hover{
+    color:#A5ACAF !important;
 }
 
-
-
-
+a:visited{
+    color:#002244;
+}
 
 
 
@@ -33,5 +48,5 @@ ul {
     width: 100%;
     height: 50px;
     margin-top: 40px;
-    color: #cbe4e8;
+    color: #002244;
 }
