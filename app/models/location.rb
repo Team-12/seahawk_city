@@ -13,4 +13,6 @@ class Location < ActiveRecord::Base
     #after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
     #http://www.rubydoc.info/github/alexreisner/geocoder/master/frames#Forward_and_Reverse_Geocoding_in_the_Same_Model
 
+  
+
 end

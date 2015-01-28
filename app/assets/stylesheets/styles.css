@@ -1,0 +1,37 @@
+/*  seahawks hex and rgb values
+silver = #a4aaab (164,170,171)
+green = #7cbe24 (124,190,36)
+navy = #0c2243 (12,34,67)
+*/
+@font-face {
+font-family: 'MkLatinoPlain';
+font-style: normal;
+font-weight: normal;
+src: local('MkLatinoPlain'), url('MkLatinoPlain.woff') format('woff');
+}
+
+
+h1 {
+    font-family: 'MkLatinoPlain';
+    font-size: 1.5em;
+}
+
+
+
+
+
+
+
+ul {
+    list-style-type: none;
+}
+
+.footer{
+    float:clear !important;
+    bottom: 0;
+/*    position: absolute;*/
+    width: 100%;
+    height: 50px;
+    margin-top: 40px;
+    color: #cbe4e8;
+}

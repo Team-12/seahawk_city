@@ -1,13 +1,13 @@
-<div class="container">
+
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-12">
       <h1>Event Detail</h1>
       <!-- if @user.user_id = @event.user_id -->
       <!-- link_to edit_event_path goes here... -->
       <!-- end if -->
       <hr>
         Name: <%= @event.name %> <br>
-        Address: <br><!-- Need to create @address in controller --> 
+        Address: <br><!-- Need to create @address in controller -->
         Date: <%= @event.date %> <br>
         Start: <%= @event.start_time %> <br>
         End: <%= @event.end_time %> <br>
@@ -20,7 +20,7 @@
         <ul>
         <% @checkins.each do %>
           <li>Fake Checkin...</li>
-        <% end %> 
+        <% end %>
         </ul>
       <% else %>
         <p>No checkins yet. :-(</p>
@@ -35,4 +35,4 @@
       </ul>
     </div>
   </div>
-</div>
+

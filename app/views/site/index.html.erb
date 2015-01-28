@@ -1,17 +1,25 @@
-<div class="container">
+
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-12">
       <h2>Map Section</h2>
-      <p>List of Locations (displayed as map) goes here...</p>
+      <!-- map -->
+      <div style='width: 100%;'>
+        <div id="map" style='width: 100%; height: 400px;'></div>
+      </div>
+
+
+
+
+      <!-- end map -->
       <ul>
         <li><%= link_to "Fake Location", "locations/1" %></li>
       </ul>
-      <br><%= link_to "Checkin", new_checkin_path, :class => "btn btn-primary" %> 
+      <br><%= link_to "Checkin", new_checkin_path, :class => "btn btn-primary", :id => "checkin_link" %>
     </div>
   </div>
   <hr>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-12">
       <h2>Event List Section</h2>
       <p>List of Events goes here...</p>
       <ul>
@@ -21,7 +29,7 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-12">
     <br><p>Development Notes:</p>
       <ul>
         <li>&check; Wire up current user display to profile route</li>
@@ -39,5 +47,19 @@
       </ul>
     </div>
   </div>
-</div>
 
+
+<script>
+
+$(function() {
+
+    var mapOptions={
+      center:[latitude,longitude],
+      zoom:11 
+    }
+  
+  drawMap(mapOptions);
+
+})
+
+</script>
