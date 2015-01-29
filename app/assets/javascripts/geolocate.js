@@ -1,4 +1,4 @@
-var longitude, latitude
+var latitude, longitude
 
 $(function(){
     var latField = $('#lat_field');
