@@ -8,8 +8,6 @@
         <%= f.text_field :user_name, :disabled => "disabled" %>
         <%= f.text_field :email, :disabled => "disabled" %>
         <%= f.password_field :password, :value => "xxxxx", :disabled => "disabled" %>
-        <%= f.hidden_field :location_id, value: params[:locationid], id: "locationid" %>
-
         <%= link_to "Edit", edit_profile_path, :class => "btn btn-primary" %>
       <% end %>
       <hr>
