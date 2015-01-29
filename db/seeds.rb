@@ -327,7 +327,7 @@ locations.each do |loc|
     Event.create([
           { user_id: nil,
             location_id: loc.id,
-            name: "Seahawks Party",
+            name: "Seahawks Super Bowl Party",
             desc: "A 12th Man Celebration",
             date: "2015/02/" + rand(1...28).to_s,
             start_time: "12:00",

@@ -3,9 +3,15 @@ class SiteController < ApplicationController
   def index
 
     # TODO: If no session exists, render /about, else render /
+    @user = current_user
 
     # TODO: Don't use .all here
-    @nearby = Location.all
+    @nearby = Event.all.sort_by{|event| event.date}
+    # if params[:latitude] && params[:longitude]
+    #     @nearby = Event.location.near("#{params[:latitude]}, #{params[:longitude]}", 1)
+    # else
+    #     @nearby = Event.location.near("Seattle,WA")
+    # end
     
     # TODO: Don't hardcode this
     @user_pin = [47.62326,-122.33025] # this will be replaced with gps from phone of user
