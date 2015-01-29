@@ -1,44 +1,43 @@
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <h1>User Profile</h1>
+      <hr>
 
-<div class="row">
-  <div class="col-xs-12 col-md-12">
-    <h1>User Profile</h1>
-    <hr>
-
-    <%= bootstrap_form_for :user do |f| %>
-      <%= f.text_field :user_name, :disabled => "disabled" %>
-      <%= f.text_field :email, :disabled => "disabled" %>
-      <%= f.password_field :password, :value => "xxxxx", :disabled => "disabled" %>
-      <%= link_to "Edit", edit_profile_path, :class => "btn btn-primary" %>
-    <% end %>
-    <hr>
-
-    <% if @current_user.is_business_owner == true %>
-      <%= link_to "Put Your Business On The Map!", new_location_path, :class => "btn btn-primary" %>
-    <% end %>
-
-
-    <% if @current_user.locations.any? %>
-      <h3>Your Registered Locations</h3>
-      <ul>
-      <% @current_user.locations.each do |location| %>
-        <li><h4><%= location.name %></h4><%= link_to "+", new_event_path, :class => "btn btn-primary btn-xs"  %></li>
+      <%= bootstrap_form_for :user do |f| %>
+        <%= f.text_field :user_name, :disabled => "disabled" %>
+        <%= f.text_field :email, :disabled => "disabled" %>
+        <%= f.password_field :password, :value => "xxxxx", :disabled => "disabled" %>
+        <%= link_to "Edit", edit_profile_path, :class => "btn btn-primary" %>
       <% end %>
-      </ul>
-    <% end %>
-    <hr>
+      <hr>
+
+      <% if @current_user.is_business_owner == true %>
+        <%= link_to "Put Your Business On The Map!", new_location_path, :class => "btn btn-primary" %>
+      <% end %>
+
+      <% if @current_user.locations.any? %>
+        <h3>Your Registered Locations</h3>
+        <ul>
+        <% @current_user.locations.each do |location| %>
+          <li><h4><%= location.name %></h4><%= link_to "+", "events/new/" + location.id.to_s, :class => "btn btn-primary btn-xs"  %></li>
+        <% end %>
+        </ul>
+      <% end %>
+
+      <hr>
 
 
-    <% if @current_user.checkins.any? %>
-      <h3>Your Checkins</h3>
-      # NOTE: Should sort/group these checkin type (new, exiting, event)
-      <ul>
-      <% @current_user.checkins.each do |checkin| %>
-        <li><h4>You checked in to a: <%= checkin.checkinable_type %></h4><%= link_to "Details", _path, :class => "btn btn-primary btn-xs"  %></li>
-    <% end %>
-      </ul>
-    <% else %>
-      <p>You have no checkins. :-(</p>
-    <% end %>
+      <% if @current_user.checkins.any? %>
+        <h3>Your Checkins</h3>
+        # NOTE: Should sort/group these checkin type (new, exiting, event)
+        <ul>
+        <% @current_user.checkins.each do |checkin| %>
+          <li><h4>You checked in to a: <%= checkin.checkinable_type %></h4><%= link_to "Details", "event/" + checkin.checkinable_id.to_s, :class => "btn btn-primary btn-xs"  %></li>
+      <% end %>
+        </ul>
+      <% else %>
+        <p>You have no checkins. :-(</p>
+      <% end %>
 
     <hr>
     <h4>Dev Notes</h4>

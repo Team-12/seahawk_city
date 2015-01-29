@@ -42,29 +42,3 @@ For testing, displaying list of sites:
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-
-<script>
-
-  <% if @current_user && @current_user.checkins.any? %>
-    var mapOptions={
-      center:[<%= @last_user_checkin.latitude %>,<%= @last_user_checkin.longitude %>],
-      zoom:16,
-      markers:<%=raw @hash.to_json %>
-    }
-  <% elsif @current_user %>
-    var mapOptions={
-      center:[<%= @user_pin[0] %>,<%= @user_pin[1] %>],
-      zoom:16,
-      markers:<%=raw @hash.to_json %>
-    }
-  <% else %>
-    var mapOptions={
-      center:[47.6097,-122.3331],
-      zoom:11,
-      markers:<%=raw @hash.to_json %>
-    }
-  <% end %>
-
-drawMap(mapOptions);
-
-</script>
