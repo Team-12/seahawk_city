@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-12">
       <h2>Capture The Flag</h2>
+      <%= render 'partials/flash' %>
       <!-- map -->
       <div class="mainMap">
         <div id="map"></div>
@@ -49,7 +50,12 @@ $(function() {
       <div id="nearby">
         <ul class="list-group">
           <% @nearby.each do |n| %>
-            <li class="list-group-item nearby-event nearEvent"><%= link_to n.date.to_s + ': ' + n.name + ' @ ' + n.location.name, "events/" + n.id.to_s %></li>
+            <li class="list-group-item nearby-event nearEvent">
+              <span>&#9;<%= n.date.to_s + ':' %>&#9;</span>
+              <%= link_to "events/"+ n.id.to_s do %>
+              <span >&#9;<%= n.name + ' @ '%>&#9;<%= n.location.name %></span>
+            <% end %>
+            </li>
           <% end %>
         </ul>
       </div>

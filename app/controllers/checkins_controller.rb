@@ -32,15 +32,16 @@ class CheckinsController < ApplicationController
         when "event"
             checkinable = Event.find_by_id(params[:checkin][:checkinable_id])
         when "new"
-            checkinable = Location.create_from_geocoder(params[:checkin][:locations][:address])
+            checkinable = Location.create_from_geocoder(params[:checkin][:locations][:address]).first
         else
             flash[:danger] = "You must select a location or event to check in!"
             redirect_to new_checkin_path
         end
-
+        # binding.pry
         # @user.checkins << Checkin.create({photo_url: image_data['public_id'], note: params[:checkin][:note], latitude: params[:checkin][:latitude], longitude: params[:checkin][:longitude], checkinable_type: params[:checkin][:checkinable_type],checkinable_id: checkinable.id })
         @user.checkins << checkinable.checkins.create({photo_url: image_data['public_id'], note: params[:checkin][:note], latitude: params[:checkin][:latitude], longitude: params[:checkin][:longitude]})
-        render json: Checkin.last
+        flash[:success] = "You have succesfully checked in"
+        render root_path
     end
 
     def show
