@@ -15,5 +15,8 @@ var drawMap = function(mapOptions){
       handler.map.centerOn({lat: mapOptions.center[0], lng: mapOptions.center[1]});
     });
 
+
+
+
 }
 

@@ -88,6 +88,9 @@ form{
     color:#002244;
 
 }
+span.space{
+    margin-left: 20px;
+}
 
 input#checkin_photo{
 

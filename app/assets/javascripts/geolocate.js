@@ -25,6 +25,7 @@ $(function(){
     // if(latField.length > 0 && longField.length > 0){
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(setFormLatLong);
+
         }
     // }
 });
