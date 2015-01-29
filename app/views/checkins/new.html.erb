@@ -12,6 +12,7 @@
       </div>
       <h3>Upload Image</h3>
       <%= bootstrap_form_for @checkin do |f| %>
+
         <%= f.file_field :photo %>
         <!-- Above line should work same as below line -->
         <!-- <input type="file" accept="image/*" capture="camera"> -->
