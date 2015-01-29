@@ -49,7 +49,7 @@ $(function() {
       <div id="nearby">
         <ul class="list-group">
           <% @nearby.each do |n| %>
-            <li class="list-group-item nearby-event"> <%= n.name %> </li>
+            <li class="list-group-item nearby-event nearEvent"> <%= n.name %> </li>
           <% end %>
         </ul>
         <h4><%= link_to "Fake Event", "events/1" %></h4>

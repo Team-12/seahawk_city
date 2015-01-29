@@ -120,6 +120,10 @@ input#checkin_photo{
     box-shadow:  2px 2px 5px rgba(28,31,34, 0.6);
 }
 
+.nearEvent:hover {
+    background-color: #69BE28;
+}
+
 .footer{
     border-top: 1px solid rgba(28,31,34, 0.4);
 
@@ -140,3 +144,5 @@ input#checkin_photo{
     font-size: 1.6em;
    }
 }
+
+.nearEvent:hover
