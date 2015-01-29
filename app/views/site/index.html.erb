@@ -51,7 +51,7 @@ $(function() {
         <ul class="list-group">
           <% @nearby.each do |n| %>
             <li class="list-group-item nearby-event nearEvent">
-              <span>&#9;<%= n.date.to_s + ':' %>&#9;</span>
+              <span>&#9;<%= n.date.to_s + ':' %>&#9;
               <%= link_to "events/"+ n.id.to_s do %>
               <span >&#9;<%= n.name + ' @ '%>&#9;<%= n.location.name %></span>
             <% end %>

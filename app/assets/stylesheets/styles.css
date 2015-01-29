@@ -134,6 +134,9 @@ input#checkin_photo{
     background-color: #69BE28;
 
 }
+.list-group-item.active{
+    background-color:#A5ACAF;
+}
 
 .footer{
     border-top: 1px solid rgba(28,31,34, 0.4);

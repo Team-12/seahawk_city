@@ -41,7 +41,7 @@ class CheckinsController < ApplicationController
         # @user.checkins << Checkin.create({photo_url: image_data['public_id'], note: params[:checkin][:note], latitude: params[:checkin][:latitude], longitude: params[:checkin][:longitude], checkinable_type: params[:checkin][:checkinable_type],checkinable_id: checkinable.id })
         @user.checkins << checkinable.checkins.create({photo_url: image_data['public_id'], note: params[:checkin][:note], latitude: params[:checkin][:latitude], longitude: params[:checkin][:longitude]})
         flash[:success] = "You have succesfully checked in"
-        render root_path
+        redirect_to root_path
     end
 
     def show
