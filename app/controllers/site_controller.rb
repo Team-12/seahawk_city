@@ -5,7 +5,7 @@ class SiteController < ApplicationController
     # TODO: If no session exists, render /about, else render /
     @user = current_user
 
-    # TODO: Don't use .all here
+    # TODO: Don't use .all here - Need to find by date (only >= today), then pipe to .near
     @nearby = Event.all.sort_by{|event| event.date}
     # if params[:latitude] && params[:longitude]
     #     @nearby = Event.location.near("#{params[:latitude]}, #{params[:longitude]}", 1)
@@ -15,7 +15,7 @@ class SiteController < ApplicationController
     
     # TODO: Don't hardcode this
     @user_pin = [47.62326,-122.33025] # this will be replaced with gps from phone of user
-    @last_user_checkin = Checkin.order("created_at").last
+    @last_user_checkin = Checkin.where("user_id = ?", @user.id).order("created_at").last
     @locations = Location.all
     @events = Event.all
     @checkins = Checkin.all
@@ -30,7 +30,7 @@ class SiteController < ApplicationController
         "height" => 32
         })
     end
-    
+
     @event_hash = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.location.latitude
       marker.lng event.location.longitude
