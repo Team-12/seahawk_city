@@ -9,6 +9,7 @@
         <%= f.text_field :date, :placeholder => "Date"%>
         <%= f.text_field :start_time, :placeholder => "Start Time" %>
         <%= f.text_field :end_time, :placeholder => "End Time" %>
+        <%= f.hidden_field :location_id, value: params[:locationid], id: "location-id" %>
         <%= f.submit :class => "btn btn-primary" %>
       <% end %>
   </div>
