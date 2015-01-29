@@ -2,6 +2,7 @@ class LocationsController < ApplicationController
 
   def index
     #ALL CODE MOVED TO SITE CONTROLLER
+    @locations = Location.all
   end
 
   # def gmaps4rails_infowindow - METHOD TO POPULATE THE INFO WINDOW, NOT BEING USED ANYMORE
