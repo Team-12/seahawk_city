@@ -40,7 +40,7 @@ users = User.create([
           }
         ])
 
-# Six Locations
+# Locations
 locations = Location.create([
           { user_id: 1,
             latitude: "47.6204",
@@ -93,7 +93,226 @@ locations = Location.create([
             address_state: "WA",
             address_zip: "98109",
             address_country: "USA"
-          }
+          },
+          { user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Paramount Theatre",
+            desc: nil,
+            address_street: "911 Pine Street",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98101",
+            website: "stgpresents.org",
+            phone_num: "(206) 682-1414"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "The Roosevelt Hotel",
+            desc: nil,
+            address_street: "1531 7th Avenue",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98101",
+            website: "roosevelthotel.com",
+            phone_num: "(206) 621-1200"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "City University of Seattle",
+            desc: nil,
+            address_street: "521 Wall Street",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98121",
+            website: "cityu.edu",
+            phone_num: "(888) 422-4898"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Seattle Aquarium",
+            desc: nil,
+            address_street: "1483 Alaskan Way",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98101",
+            website: "seattleaquarium.org",
+            phone_num: "(206) 386-4300"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "The Seattle Great Wheel",
+            desc: nil,
+            address_street: "1301 Alaskan Way",
+            address_city: "Seattle" ,
+            address_state: "WA",
+            address_zip: "98101",
+            website: "seattlegreatwheel.com",
+            phone_num: "(206) 623-8607"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "The Pike Brewing Company",
+            desc: nil,
+            address_street: "1415 1st Avenue",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98101",
+            website: "pikebrewing.com"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Benaroya Hall",
+            desc: nil,
+            address_street: "200 University Street",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98101",
+            website: "benaroyahall.org",
+            phone_num: "(206) 215-4800"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "The Hawks Nest",
+            desc: nil,
+            address_street: "1028 1st Avenue South",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98134",
+            website: "hawksnestbar.com",
+            phone_num: "(206) 381-8630"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "EMP Museum",
+            desc: nil,
+            address_street: "325 5th Avenue North",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98109",
+            website: "empmuseum.org",
+            phone_num: "(206) 770-2700"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Rain City Burgers",
+            desc: nil,
+            address_street: "6501 Roosevelt Way Northeast",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98115",
+            website: "raincityburgers.com",
+            phone_num: "(206) 525-3542"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "T-Mobile Headquarters",
+            desc: nil,
+            address_street: "12920 SE 38th Street",
+            address_city: "Bellevue",
+            address_state: "WA",
+            address_zip: "98006",
+            website: "t-mobile.com",
+            phone_num: "(800) 318-9270"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Harborview Medical Center",
+            desc: nil,
+            address_street: "325 9th Avenue",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98104",
+            website: "uwmedicine.washington.edu",
+            phone_num: "(206) 744-3000"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "The Seattle Great Wheel",
+            desc: nil,
+            address_street: "1301 Alaskan Way",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98101",
+            website: "seattlegreatwheel.com",
+            phone_num: "(206) 623-8607"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Starbucks Headquarters",
+            desc: nil,
+            address_street: "2401 Utah Avenue South",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98134",
+            website: "starbucks.com",
+            phone_num: "(206) 624-9496"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Allen Institute for Brain Science",
+            desc: nil,
+            address_street: "551 North 34th Street #200",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98103",
+            website: "alleninstitute.org",
+            phone_num: "(206) 548-7000"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Metropolitan Market Retail Support Center",
+            desc: nil,
+            address_street: "4025 Delridge Way Southwest #100",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98106",
+            website: "metropolitan-market.com",
+            phone_num: "(206) 923-0740"
+          },
+          {
+            user_id: nil,
+            latitude: nil,
+            longitude: nil,
+            name: "Smith Tower",
+            desc: nil,
+            address_street: "506 2nd Avenue",
+            address_city: "Seattle",
+            address_state: "WA",
+            address_zip: "98104",
+            website: "smithtower.com",
+            phone_num: "(206) 622-4004"
+          }            
         ])
 
 # Six Events
@@ -109,5 +328,24 @@ events = Event.create([
           }
         ])
 
-# ?? Checkins
-# checkins = Checkin.create([])
+# Add Events to about 30% of Locations
+locations.each do |l|
+  i = rand(4)
+  while i = 0  
+    Event.create([
+          { user_id: 
+            location_id: l.id,
+            name: "Seahawks Party",
+            desc: "A 12th Man Celebration",
+            date: "2015/02/01",
+            start_time: "12:00",
+            end_time: "8:00",
+            photo_url: "http://media.thenewstribune.com/smedia/2014/05/08/23/00/1wC2dn.AuSt.5.jpg"
+          }
+        ])
+    i = rand(4-1)+1
+  end
+end
+
+
+# For each user, create 5-15 checkins for random Locations/Events
