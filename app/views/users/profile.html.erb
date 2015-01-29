@@ -12,16 +12,19 @@
       <hr>
 
       <% if @current_user.is_business_owner == true %>
-        <%= link_to "Put Your Business On The Map!", new_location_path, :class => "btn btn-primary" %>
+        <%= link_to "Add a New Location", new_location_path, :class => "btn btn-primary" %>
       <% end %>
 
       <% if @current_user.locations.any? %>
         <h3>Your Registered Locations</h3>
-        <ul>
-        <% @current_user.locations.each do |location| %>
-          <li><h4><%= location.name %></h4><%= link_to "+", "events/new/" + location.id.to_s, :class => "btn btn-primary btn-xs"  %></li>
-        <% end %>
-        </ul>
+      <ul>
+      <% @current_user.locations.each do |location| %>
+        <li><h4><%= location.name %></h4><%= link_to "Add Event", "events/new/" + location.id.to_s, :class => "btn btn-primary btn-xs"  %>
+          <% end %>
+      <% @current_user.events.each do |event| %>
+        <span class="space"><%= cl_image_tag(event.photo_url, :width => 100, :height => 100, :crop => :fill) %></span>
+      <% end %></li>
+      </ul>
       <% end %>
 
       <hr>
