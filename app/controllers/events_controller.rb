@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   def index
+    @events = Event.all
 
   end
 
@@ -12,6 +13,16 @@ class EventsController < ApplicationController
   end
 
   def create
+     @user = current_user
+    if params[:event][:photo] == ""
+        flash[:danger] = "You must submit a photo to check in!"
+        redirect_to new_event_path
+    else
+        image_data = capture_image params[:event][:photo].path
+    end
+    Event.create({photo_url: image_data['public_id'], name: params[:event][:name], desc: params[:event][:desc], date: params[:event][:date], start_time: params[:event][:start_time], end_time: params[:event][:end_time], location_id: params[:event][:location_id], user_id: @user.id})
+    #render json: Event.last
+    redirect_to events_path
   end
 
   def nearby
@@ -42,7 +53,7 @@ class EventsController < ApplicationController
 
   ###
   def event_params
-    params.require(:event).permit(:name,:desc,:date,:start_time,:end_time,:photo_url)
+    params.require(:event).permit(:name,:desc,:date,:start_time,:end_time,:photo_url,:location_id)
   end
 
 end

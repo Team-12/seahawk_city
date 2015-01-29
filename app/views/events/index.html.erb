@@ -1,1 +1,5 @@
 <h1>Event index page</h1>
+
+<% @events.each do |event| %>
+  <li><h1><%= event.name%><%= cl_image_tag(event.photo_url, :width => 200, :height => 200, :crop => :fill) %></h1></li>
+<% end %>
