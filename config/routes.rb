@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'site#index'
   get 'about' => 'site#about'
+  get 'about/team' => 'site#about_team'
 
   # sessions
   get 'login' => 'sessions#new', as: :login

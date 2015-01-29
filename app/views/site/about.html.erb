@@ -1,1 +1,62 @@
 <h1>About page </h1>
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div id="twelfth" class="carousel slide" data-ride="carousel" data-interval="3000">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#twelfth" data-slide-to="0" class="active"></li>
+    <li data-target="#twelfth" data-slide-to="1"></li>
+    <li data-target="#twelfth" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag("skyline.jpg", :alt => "west seattle blog 12th man") %>
+      <div class="sliderCap">
+           <span class="carousel-caption row-fluid">
+      <h2>Welcome to Seahawk City.<br>
+      <small>Geo-caching game for 12th man fans. Capture the flag, and share it here.</small> </h2>
+      <a class="btn btn-primary pull-right" href="/">I'm In!</a>
+   </span>
+      </div>
+    </div>
+    <div class="item">
+
+       <%= image_tag("12thman.JPG", :alt => "12th man") %>
+      <div class="sliderCap">
+           <span class="carousel-caption row-fluid">
+      <h2>"Where my twelves?"<br>
+      <small>Add your 12th man party or event.</small> </h2>
+      <a class="btn btn-primary pull-right" href="/">I'm In!</a>
+   </span>
+      </div>
+    </div>
+    <div class="item">
+
+       <%= image_tag("people.jpg", :alt => "people flag") %>
+       <div class="sliderCap">
+           <span class="carousel-caption row-fluid">
+      <h2>Find your kind.<br>
+      <small>Celebrate Seattle and your fellow twelves!</small> </h2>
+      <a class="btn btn-primary pull-right" href="/">I'm In!</a>
+   </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#twelfth" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#twelfth" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->
+<script>
+    $('.carousel').carousel({
+        interval: 3000
+    })
+</script>
+</div>
+</div>
