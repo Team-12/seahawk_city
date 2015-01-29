@@ -12,7 +12,7 @@
         <h3>2. Where Is This?</h3>
         <ul class="list-group">
           <% @nearby.each do |n| %>
-            <li class="list-group-item nearby-location" data-id="<%= n.id %>" data-type="location"> <%= n.name %> </li>
+            <li class="list-group-item nearby-location nearEvent" data-id="<%= n.id %>" data-type="location"> <%= n.name %> </li>
           <% end %>
         </ul>
         <h4><a href="#" id="noneOfTheAbove">None of the Above</a></h4>
