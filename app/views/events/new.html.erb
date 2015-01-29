@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <h1>New Event Page</h1>
+    <h1>Add a new event for: <%= Location.find_by_id(params[:locationid]).name %></h1>
     <h3>Navigate to: <%= link_to "Events", events_path %></h3><br>
       <%= bootstrap_form_for(@event) do |f| %>
         <h3>Upload Image</h3><%= f.file_field :photo %>

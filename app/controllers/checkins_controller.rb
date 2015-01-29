@@ -39,7 +39,7 @@ class CheckinsController < ApplicationController
             checkinable_id = params[:checkin][:checkinable_id]
         end
         @current_user.checkins << Checkin.create({photo_url: image_data['public_id'], note: params[:checkin][:note], latitude: params[:checkin][:latitude], longitude: params[:checkin][:longitude], checkinable_type: params[:checkin][:checkinable_type],checkinable_id: checkinable_id })
-        render json: image_data
+        redirect_to root_path #render json: image_data
 
 
     end
