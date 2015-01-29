@@ -17,7 +17,7 @@ class Location < ActiveRecord::Base
       [self.latitude, self.longitude]
     end
 
-    def self.create_from_geocoder address
+    def self.create_from_geocoder (address, user_id=nil)
       results = Geocoder.search(address).first
       existing_item = self.where({
         latitude:results.latitude,

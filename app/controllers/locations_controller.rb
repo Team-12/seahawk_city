@@ -12,6 +12,7 @@ class LocationsController < ApplicationController
 
   def new
       @location = Location.new
+      @user = current_user
   end
 
   def create
@@ -22,8 +23,15 @@ class LocationsController < ApplicationController
                   render json: @existing_location
               else
                   #IF it's not an existing location
-                  @location = Location.create(search_address_hash)
-                  render json: nearby_locations
+                  if URI(request.referer).path == '/locations/new'
+                    @location = Location.create(search_address_hash.merge({"user_id" => current_user.id}))
+                    redirect_to profile_path
+                  # render json: nearby_locations
+                  else
+                    @location = Location.create(search_address_hash)
+                    render json: nearby_locations
+                    # redirect_to root_path
+                  end
               end
       else
           #If Longitude and Latitude are both available
@@ -33,8 +41,15 @@ class LocationsController < ApplicationController
                   redirect_to new_location_path
               else
                   #REVERSE-GEOCODE to Get Address Details
-                  @location = Location.create(reverse_geocoded_address_hash)
-                  render json: nearby_locations
+                  if URI(request.referer).path == '/locations/new'
+                    @location = Location.create(reverse_geocoded_address_hash.merge({"user_id" => current_user.id}))
+                    redirect_to profile_path
+                  else
+                    @location = Location.create(reverse_geocoded_address_hash)
+                    # redirect_to root_path
+                    render json: nearby_locations
+                  end
+                  # render json: nearby_locations
               end
           else
               #If longitude and/or latitude are not available, use address form
@@ -42,8 +57,17 @@ class LocationsController < ApplicationController
               if existing_location
                   render json: existing_location
               else
+                if URI(request.referer).path == '/locations/new'
+                  @location = Location.create(address_hash.merge({"user_id" => current_user.id}))
+                  redirect_to profile_path
+                else
                   @location = Location.create(address_hash)
                   render json: nearby_locations
+                  # redirect_to root_path
+
+                end
+
+                  # render json: nearby_locations
               end
           end
       end
@@ -94,7 +118,7 @@ class LocationsController < ApplicationController
   end
 
   def location_params
-      params.require(:location).permit(:name,:desc,:longitude,:latitude,:address_street,:address_city,:address_state,:address_zip,:address_country, :address)
+      params.require(:location).permit(:name,:desc,:longitude,:latitude,:address_street,:address_city,:address_state,:address_zip,:address_country, :address, :user_id)
   end
 
   def address_string

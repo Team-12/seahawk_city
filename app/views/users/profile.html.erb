@@ -4,12 +4,18 @@
       <h1>User Profile</h1>
       <hr>
 
-      <%= bootstrap_form_for :user do |f| %>
+      <%= bootstrap_form_for :user, :method => :patch do |f| %>
         <%= f.text_field :user_name, :disabled => "disabled" %>
         <%= f.text_field :email, :disabled => "disabled" %>
         <%= f.password_field :password, :value => "xxxxx", :disabled => "disabled" %>
-        <%= link_to "Edit", edit_profile_path, :class => "btn btn-primary" %>
+        <%= f.form_group :is_business_owner, label: { text: "Do You Own a Business That Hosts Hawks Events?"} do %><br>
+          <%= f.radio_button :is_business_owner, false, label: "No, I'm a Fan!", inline: true%>
+          <%= f.radio_button :is_business_owner, true, label: "Yes, Our Business Hosts Hawk's Events!", inline: true%>
+          <% end %>
+
+        <%= f.submit "Edit" %>
       <% end %>
+
       <hr>
 
       <% if @current_user.is_business_owner == true %>
@@ -24,7 +30,7 @@
         <% end %>
         </ul>
       <% end %>
-      
+
       <hr>
 
 
