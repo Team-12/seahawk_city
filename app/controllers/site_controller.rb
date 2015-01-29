@@ -15,7 +15,9 @@ class SiteController < ApplicationController
     
     # TODO: Don't hardcode this
     @user_pin = [47.62326,-122.33025] # this will be replaced with gps from phone of user
-    @last_user_checkin = Checkin.where("user_id = ?", @user.id).order("created_at").last
+    if @user
+      @last_user_checkin = Checkin.where("user_id = ?", @user.id).order("created_at").last
+    end
     @locations = Location.all
     @events = Event.all
     @checkins = Checkin.all
