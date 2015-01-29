@@ -1,10 +1,11 @@
+<%= link_to "xxx", logout_path, method: "delete" %>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h3>1. Take a Picture!</h3>
       <%= bootstrap_form_for @checkin do |f| %>
         <%= f.file_field :photo, hide_label: :true %>
-        <%= f.hidden_field :checkinable_id, :id => "c_id", :label => "Checkinable ID" %>
-        <%= f.hidden_field :checkinable_type, :id => "c_type" %>
+        <%= f.text_field :checkinable_id, :id => "c_id", :label => "Checkinable ID" %>
+        <%= f.text_field :checkinable_type, :id => "c_type" %>
         <%= f.hidden_field :latitude, value: params[:latitude], id: "lat_field" %>
         <%= f.hidden_field :longitude, value: params[:longitude], id: "long_field" %>
       <div id="nearby">
@@ -20,8 +21,9 @@
         <div id="newLocation">
           <%= f.fields_for :locations do |locations_form| %>
 
-            <%= locations_form.text_field :name, :label => "Location Address or Description", :placeholder => "(ex: 'Space Needle', '123 Pike St.)" %>
-            <%# locations_form.text_field :desc, :label => "Description" %>
+            <%= locations_form.text_field :name, :label => "Name", :placeholder => "" %>
+            <%= locations_form.text_field :desc, :label => "Description" %>
+            <%= locations_form.text_field :address, :label => "Location Address or Description", :placeholder => "(ex: 'Space Needle', '123 Pike St.)" %>
             <%# locations_form.text_field :address_street, :label => "Street Address" %>
             <%# locations_form.text_field :address_city, :label => "City" %>
             <%# locations_form.text_field :address_state, :label => "State" %>
