@@ -1,11 +1,10 @@
-<%= link_to "xxx", logout_path, method: "delete" %>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h3>1. Take a Picture!</h3>
       <%= bootstrap_form_for @checkin do |f| %>
         <%= f.file_field :photo, hide_label: :true %>
-        <%= f.text_field :checkinable_id, :id => "c_id", :label => "Checkinable ID" %>
-        <%= f.text_field :checkinable_type, :id => "c_type" %>
+        <%= f.hidden_field :checkinable_id, :id => "c_id", :label => "Checkinable ID" %>
+        <%= f.hidden_field :checkinable_type, :id => "c_type" %>
         <%= f.hidden_field :latitude, value: params[:latitude], id: "lat_field" %>
         <%= f.hidden_field :longitude, value: params[:longitude], id: "long_field" %>
       <div id="nearby">
@@ -15,8 +14,8 @@
           <% @nearby.each do |n| %>
             <li class="list-group-item nearby-location" data-id="<%= n.id %>" data-type="location"> <%= n.name %> </li>
           <% end %>
-          <h4><a href="#" id="noneOfTheAbove">None of the Above</a></h4>
         </ul>
+        <h4><a href="#" id="noneOfTheAbove">None of the Above</a></h4>
         <!-- nested form-->
         <div id="newLocation">
           <%= f.fields_for :locations do |locations_form| %>
