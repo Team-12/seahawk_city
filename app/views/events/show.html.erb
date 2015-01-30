@@ -1,4 +1,3 @@
-
 <div class="row">
   <%= render 'partials/flash' %>
   <div class="col-xs-12 col-md-12">
@@ -6,37 +5,31 @@
     <!-- if @user.user_id = @event.user_id -->
     <!-- link_to edit_event_path goes here... -->
     <!-- end if -->
+      <div class="eventDetail">
+      Name: <%= @event.name %> <br>
+      Location: <%= @event.location.name %> <br>
+      Date: <%= @event.date %> <br>
+      Start: <%= @event.start_time.strftime("%l:%M %p") %> <br>
+      End: <%= @event.end_time.strftime("%l:%M %p") %> <br>
+      Desc: <%= @event.desc %> <br>
+
+     <%= cl_image_tag(@event.photo_url, :width => 275, :crop => :fill, :class => "cloudImg") %>
+
+      </div>
     <hr>
-
-    <dl class="dl-horizontal">
-    <dt>Name</dt>
-      <dd><%= @event.name %></dd> 
-        <dt>Date</dt>
-      <dd><%= @event.date.strftime("%l:%M %p") %></dd> 
-    </dl>
-
-
-    Name: <%= @event.name %> <br>
-    Address: <br><!-- Need to create @address in controller -->
-    Date: <%= @event.date %> <br>
-    Start: <%= @event.start_time %> <br>
-    End: <%= @event.end_time %> <br>
-    Desc: <%= @event.desc %> <br>
-    <img src="<%= @event.photo_url %>" alt="">
-    <hr>
-    <h3>Checkins</h3>
+    <h2>Checkins</h2>
     <!-- checkin link goes here... -->
     <% if @checkins %>
-    <ul>
-      <% @checkins.each do %>
-      <li>Fake Checkin...</li>
-      <% end %>
-    </ul>
+      <ul>
+        <% @checkins.each do %>
+          <li>Fake Checkin...</li>
+        <% end %>
+      </ul>
     <% else %>
-    <p>There are no checkins for this location. </p>
-    <%= link_to "Add a Checkin", new_checkin_path, :class => "btn btn-primary" %>
+      <p>There are no checkins for this location. </p>
+      <%= link_to "Add a Checkin", new_checkin_path, :class => "btn btn-primary checkin_link" %>
+      <div class="checkin_searching">Searching for location...</div>
     <% end %>
-
-
-  </div>
+    </div>
+</div>
 
