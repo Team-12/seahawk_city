@@ -19,7 +19,7 @@
 $(function() {
   <% if @current_user && @current_user.checkins.any? %>
     var mapOptions={
-      center:[<%= @last_user_checkin.checkinable.latitude %>,<%= @last_user_checkin.checkinable.longitude %>],
+      center:[<%= @checkin_location_latitude %>,<%= @checkin_location_longitude %>],
       zoom:16,
       markers:<%=raw @hash.to_json %>
     }
