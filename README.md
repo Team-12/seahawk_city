@@ -14,4 +14,4 @@ First to find a flag? 100 points! Add a photo to the collection existing flags o
 ###Your reward? 
 Bragging rights as the most Ballistic Beast-Mode Fan in town!
 
-####Early basic (wireframes)[https://dl.dropboxusercontent.com/u/4189611/Wireframe.pdf] are hosted here
+####Early basic [wireframes](https://dl.dropboxusercontent.com/u/4189611/Wireframe.pdf)
