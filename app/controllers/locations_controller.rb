@@ -40,10 +40,12 @@ class LocationsController < ApplicationController
               #If longitude and/or latitude are not available, use address form
               geo_and_reverse
               if existing_location
-                  render json: existing_location
+                  #render json: existing_location
+                  redirect_to new_location_path
               else
                   @location = Location.create(address_hash)
-                  render json: nearby_locations
+                  #render json: nearby_locations
+                  redirect_to profile_path
               end
           end
       end
