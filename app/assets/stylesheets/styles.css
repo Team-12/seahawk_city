@@ -83,6 +83,11 @@ nav ul li {
     color: #002244;
 }
 
+#map, img{
+
+     box-shadow: none;
+    border-bottom: none;
+}
 .mainMap{
     margin-top: 20px;
 }
