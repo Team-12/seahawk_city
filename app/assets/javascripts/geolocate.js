@@ -4,15 +4,6 @@ $(function(){
     checkin_link.hide();
 
     var setFormLatLong = function(position){
-        latitude = position.coords.latitude
-        longitude = position.coords.longitude
-        console.log(position.coords);
-        if(latField.length > 0 && longField.length > 0){
-            latField.val(latitude);
-            longField.val(longitude);
-        }
-        $("#checkin_link").attr("href", "/checkins/new?latitude="+position.coords.latitude + "&longitude=" + position.coords.longitude)
-        // $('#checkin_submit').prop('disabled', false); // enables button after location is found
         var latitude = position.coords.latitude
         var longitude = position.coords.longitude
 
