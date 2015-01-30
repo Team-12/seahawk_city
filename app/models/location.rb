@@ -23,8 +23,8 @@ class Location < ActiveRecord::Base
         latitude:results.latitude,
         longitude:results.longitude
         })
-      if existing_item != []
-        existing_item
+      if !existing_item.empty?
+        existing_item.first
       else
       self.create({
         latitude:results.latitude,
