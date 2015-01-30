@@ -25,16 +25,22 @@ class UsersController < ApplicationController
   end
 
   def edit_profile
+    @user = current_user
     #edit my profile (get)
   end
 
   def update_profile
+    # render json: params
+    @user = current_user
+    @user.update!(user_params)
+
     #patch my profile (update)
+    redirect_to profile_path
   end
 
   ###
   def user_params
-    params.require(:user).permit(:user_name,:email,:password,:password_confirmation)
+    params.require(:user).permit(:user_name,:email,:password,:password_confirmation,:is_business_owner)
   end
 
 end

@@ -14,6 +14,7 @@
         <%= f.text_field :address_state, :placeholder => "State" %>
         <%= f.text_field :address_zip, :placeholder => "Zipcode" %>
         <%= f.text_field :address_country, :placeholder => "Country" %>
+        <%= f.text_field :user_id, value: @current_user.id, id: "user_id" %>
         <%= f.submit %>
         <% end %>
         <button class="btn btn-primary">Get GPS</button>
