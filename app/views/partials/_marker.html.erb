@@ -1,29 +1,30 @@
-<div>
+<div class="row text-center">
+  <div class="col-xs-12">
 
   <ul>
     <% if object.instance_of?(Event) %>
-      <li><h5>Title: <%= object.name %></h5></li>
-      <li><h5>Date: <%= object.date %></h5></li>
-      <li><h5>Start Time: <%= object.start_time %>. End Time: <%= object.end_time %></h5></li>
-      <li><p>Details: <%= object.desc %></p></li>
-      <h5>Images</h5>
-      <%= cl_image_tag(object.photo_url, :width => 100, :height => 100, :crop => :fill) %>
+      <li><h5><%= object.location.name %></h5></li>
+      <li><h5>Date: <%= object.date.strftime("%b %d, %Y") %></h5></li>
+      <li><h5>Start Time: <%= object.start_time.strftime("%l:%m %p ") %> | End Time: <%= object.end_time.strftime("%l:%m %p ") %></h5></li>
+      <li><h5><%= object.desc %></h5></li>
+
+      <%= cl_image_tag(object.photo_url, :width => 75, :height => 75, :crop => :fill) %>
       <% if object.checkins.any? %>
-        <%= cl_image_tag(object.checkins[0].photo_url, :width => 100, :height => 100, :crop => :fill) %>
+        <%= cl_image_tag(object.checkins[0].photo_url, :width => 75, :height => 75, :crop => :fill) %>
       <% end %>
     <% end %>
 
     <% if object.instance_of?(Location) %>
-      <li><h5>Title: <%= object.name %></h5></li>
-      <li><h5>Address: <%= object.address %></h5></li>
-      <li><p>Details: <%= object.desc %></p></li>
+      <li><h5><%= object.name %></h5></li>
+      <li><h5><%= object.address %></h5></li>
+      <li><h5><%= object.desc %></h5></li>
       <% if object.checkins.any? %>
-        <h5>Images</h5>
-        <%= cl_image_tag(object.checkins[0].photo_url, :width => 100, :height => 100, :crop => :fill) %>
+
+        <%= cl_image_tag(object.checkins[0].photo_url, :width => 75, :height => 75, :crop => :fill) %>
       <% end %>
     <% end %>
   </ul>
-
+</div>
 </div>
 
 
