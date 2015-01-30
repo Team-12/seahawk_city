@@ -3,18 +3,14 @@
     <div class="col-xs-12, col-md-12">
       <h1>Create a New Account</h1>
 
-      <% if @user.errors.any? %>
-          <% @user.errors.full_messages.each do |error| %>
-              <div class="alert alert-danger"><%= error %></div>
-          <% end %>
-      <% end %>
+       <%= render 'partials/flash' %>
 
       <%= bootstrap_form_for :user do |f| %>
         <%= f.text_field :email, placeholder: "Enter your email" %>
         <%= f.text_field :user_name, placeholder: "Choose a user name (ex: 'BeastMode2015', 'HawkFan4Ever')" %>
         <%= f.password_field :password, placeholder: "Create a password" %>
         <%= f.password_field :password_confirmation, placeholder: "Confirm your password" %>
-        <%= f.submit "Create Account" %> or <%= link_to "Login", login_path %>
+        <%= f.submit "Create Account", :class => "btn btn-primary" %> <br><br><%= link_to "Login", login_path, :class => "btn btn-primary" %>
       <% end %>
     </div>
 
