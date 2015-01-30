@@ -25,7 +25,7 @@ $(function() {
     }
   <% elsif @current_user %>
     var mapOptions={
-      center:[<%= @user_pin[0] %>,<%= @user_pin[1] %>],
+      center:[<%=  %>,<%= @user_pin[1] %>],
       zoom:16,
       markers:<%=raw @hash.to_json %>
     }
