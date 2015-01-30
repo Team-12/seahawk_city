@@ -12,7 +12,7 @@ class SiteController < ApplicationController
     # else
     #     @nearby = Event.location.near("Seattle,WA")
     # end
-    
+
     # TODO: Don't hardcode this
     @user_pin = [47.62326,-122.33025] # this will be replaced with gps from phone of user
     if @user
