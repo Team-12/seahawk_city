@@ -1,6 +1,6 @@
 <!-- <div class="container" style="width: 100%"> -->
   <div class="row">
-    <div class="col-xs-12 col-md-12">
+    <div class="col-xs-12 col-md-12 col-lg-12">
       <h2>Capture The Flag</h2>
       <%= render 'partials/flash' %>
       <!-- map -->
@@ -10,6 +10,19 @@
       <!-- end map -->
       <br><%= link_to "Checkin", new_checkin_path, :class => "btn btn-primary checkin_link" %>
       <div class="checkin_searching">Searching for location...</div>
+    </div>
+  </div>
+    <h2 class="text-center">Let's Play!</h2>
+  <div class="row text-left">
+    <div class="col-xs-12 col-md-12 col-lg-8 col-lg-offset-2">
+
+      <h3>The Goal: <small>Rise through the leaderboards capturing photos of every 12th Man Flag you can find.</small></h3>
+      <h3>How to Play: <small>Click the check-in button to snap a photo of every 12th Man Flag you visit.</small></h3>
+
+      <h3>Scoring: <small>First to find a flag? 100 points! Add a photo to the collection existing flags on the map, score 10 points! </small></h3>
+
+      <h3>Your reward? <small> Bragging rights as the most Ballistic Beast-Mode Fan in town!</small></h3>
+
     </div>
   </div>
 <!-- </div> -->
@@ -46,7 +59,7 @@ $(function() {
 
   <hr>
   <div class="row">
-    <div class="col-xs-12 col-md-12">
+    <div class="col-xs-12 col-md-12 col-lg-8 col-lg-offset-2">
       <h2>Nearby Events</h2>
 
       <div id="nearby">
