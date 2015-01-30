@@ -10,7 +10,9 @@
 
       <%= cl_image_tag(object.photo_url, :width => 75, :height => 75, :crop => :fill) %>
       <% if object.checkins.any? %>
-        <%= cl_image_tag(object.checkins[0].photo_url, :width => 75, :height => 75, :crop => :fill) %>
+        <% object.checkins.each do |checkin| %>
+          <%= cl_image_tag(checkin.photo_url, :width => 75, :height => 75, :crop => :fill) %>
+        <% end %>
       <% end %>
     <% end %>
 
@@ -19,8 +21,9 @@
       <li><h5><%= object.address %></h5></li>
       <li><h5><%= object.desc %></h5></li>
       <% if object.checkins.any? %>
-
-        <%= cl_image_tag(object.checkins[0].photo_url, :width => 75, :height => 75, :crop => :fill) %>
+        <% object.checkins.each do |checkin| %>
+          <%= cl_image_tag(checkin.photo_url, :width => 75, :height => 75, :crop => :fill) %>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
