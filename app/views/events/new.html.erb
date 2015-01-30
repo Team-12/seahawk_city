@@ -1,13 +1,19 @@
-<div class="row">
+
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+<div class="row text-center">
   <%= render 'partials/flash' %>
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <h1>New Event Page</h1>
-    <h3>Navigate to: <%= link_to "Events", events_path %></h3><br>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+    <h2>Add an Event <small> | <%= link_to "View All Events", events_path %></small></h2>
+  <br>
       <%= bootstrap_form_for(@event) do |f| %>
         <h3>Upload Image</h3><%= f.file_field :photo %>
         <%= f.text_field :name, :placeholder => "Event Title" %>
         <%= f.text_field :desc, :placeholder => "Description"%>
-        <%= f.text_field :date, :placeholder => "Date"%>
+        <%= f.date_field :date,  :id => 'datepicker'  %>
         <%= f.text_field :start_time, :placeholder => "Start Time" %>
         <%= f.text_field :end_time, :placeholder => "End Time" %>
         <%= f.hidden_field :location_id, value: params[:locationid], id: "location-id" %>

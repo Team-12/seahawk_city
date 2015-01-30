@@ -1,6 +1,6 @@
   <div class="row">
     <%= render 'partials/flash' %>
-    <div class="col-xs-12 col-md-12">
+    <div class="col-xs-12 col-md-12 col-lg-8 col-lg-offset-2">
       <h2>User Profile</h2>
 
 
@@ -17,7 +17,7 @@
         <%= f.submit "Edit", :class => "btn btn-primary" %>
       <% end %>
 
-      <hr>
+      <br>
 
       <% if @current_user.is_business_owner == true %>
         <%= link_to "Add a New Location", new_location_path, :class => "btn btn-primary" %>
