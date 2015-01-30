@@ -24,7 +24,9 @@ class ApplicationController < ActionController::Base
     Cloudinary::Uploader.upload(new_photo_path) if new_photo_path
   end
 
-
+def not_found
+    raise ActionController::RoutingError.new("Not Found")
+end
 
 
 end

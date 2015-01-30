@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   resources :checkins
 
   #404 error route
-  #get '*path', to: "application#not_found"
-  get "*any", via: :all, to: "errors#not_found"
+  get '*path', to: "application#not_found"
+  # get "*any", via: :all, to: "errors#not_found"
 
   # Example resource route with options:
   #   resources :products do
