@@ -3,6 +3,7 @@
       <h3>1. Take a Picture!</h3>
       <%= bootstrap_form_for @checkin do |f| %>
         <%= f.file_field :photo, hide_label: :true %>
+        
         <%= f.hidden_field :checkinable_id, :id => "c_id", :label => "Checkinable ID" %>
         <%= f.hidden_field :checkinable_type, :id => "c_type" %>
         <%= f.hidden_field :latitude, value: params[:latitude], id: "lat_field" %>
