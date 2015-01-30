@@ -332,7 +332,7 @@ locations.each do |loc|
             date: "2015/02/" + rand(1...28).to_s,
             start_time: "12:00",
             end_time: "8:00",
-            photo_url: "" # Need cloudinary photo ids here...
+            photo_url: "http://media.komonews.com/images/140510_NFL_Draft_Seahawks_Football___2.jpg" # Need cloudinary photo ids here...
           }
         ])
     i = rand(1..2) # Increase odds of Location with at least 1 to have others.
@@ -357,11 +357,12 @@ users.each do |user|
     end
 
     note = "Test Checkin #" + count.to_s + " for " + user.user_name
+    photo_url = "http://blog.thenewstribune.com/seahawks/files/2012/05/MemorialDay.jpeg"
     latitude = checkinable_type == "location" ? checkinable.latitude : checkinable.location.latitude
     longitude = checkinable_type == "location" ? checkinable.longitude : checkinable.location.longitude
 
     # Create the checkin
-    user.checkins << checkinable.checkins.create({photo_url: "", note: note, latitude: latitude, longitude: longitude})
+    user.checkins << checkinable.checkins.create({photo_url: photo_url, note: note, latitude: latitude, longitude: longitude})
 
     i += 1
     count += 1
