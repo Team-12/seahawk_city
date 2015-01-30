@@ -28,23 +28,19 @@
       <div class="table-responsive">
       <table class="table">
       <% if @current_user.locations.any? %>
+        <h3>Your Registered Locations</h3>
+        <tr>
+          <th class="tableRow">New:</th>
+          <th class="tableRow">Name:</th>
+          <th class="tableRow">Description:</th>
+        </tr>
         <% @current_user.locations.each do |location| %>
-         <h3>Your Registered Locations</h3>
-          <tr>
-            <th class="tableRow">New:</th>
-            <th class="tableRow">Name:</th>
-            <th class="tableRow">Description:</th>
-
-
-          </tr>
-          <tr>
-            <td><%= link_to "+", "events/new/" + location.id.to_s, :class => "btn btn-primary btn-xs"  %></td>
-            <td class="tableRow"><%= location.name %></td>
-            <td class="tableRow"><%= location.desc %></td>
-
-          </tr>
+        <tr>
+          <td><%= link_to " + ", "events/new/" + location.id.to_s, :class => "btn btn-primary btn-xs"  %></td>
+          <td class="tableRow"><%= location.name %></td>
+          <td class="tableRow"><%= location.desc %></td>
+        </tr>
         <% end %>
-
       <% end %>
 
       </table>
@@ -58,18 +54,16 @@
       <table class="table">
 
         <% if @current_user.checkins.any? %>
-         <h3>Your Checkins</h3>
-          <% @current_user.checkins.each do |checkin| %>
-            <tr>
-              <th class="tableRow ">Note:</th>
-              <th class="tableRow ">Image:</th>
-
-            </tr>
-
-          <tr>
-            <td class='tableRow'><%= checkin.note %></td>
-            <td class="tableImg"><%= cl_image_tag(checkin.photo_url, :width => 50, :height => 50, :crop => :fill) %></td>
-          </tr>
+        <h3>Your Checkins</h3>
+        <tr>
+          <th class="tableRow ">Note:</th>
+          <th class="tableRow ">Image:</th>
+        </tr>
+        <% @current_user.checkins.each do |checkin| %>
+        <tr>
+          <td class='tableRow'><%= checkin.note %></td>
+          <td class="tableImg"><%= cl_image_tag(checkin.photo_url, :width => 50, :height => 50, :crop => :fill) %></td>
+        </tr>
           <% end %>
 
         <% else %>
@@ -87,4 +81,4 @@
 
       </div>
       </div>
->>>>>>> origin/new_pages
+\
