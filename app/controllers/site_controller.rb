@@ -17,7 +17,7 @@ class SiteController < ApplicationController
     @user_pin = [47.62326,-122.33025] # this will be replaced with gps from phone of user
     if @user
       @last_user_checkin = Checkin.where("user_id = ?", @user.id).order("created_at").last
-      if @last_user_checkin.checkinable == Event
+      if @last_user_checkin.checkinable_type == Event
         @checkin_location_latitude = @last_user_checkin.checkinable.location.latitude
         @checkin_location_longitude = @last_user_checkin.checkinable.location.longitude
       else
