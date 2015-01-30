@@ -20,11 +20,19 @@ class LocationsController < ApplicationController
       if params[:location][:address] != ""
           geo_and_reverse
               if @existing_location
-                  render json: @existing_location
-              else
+                  @existing_location.update!("user_id" => current_user.id)
+                  # render json: @existing_location
+                  flash[:success] = "Thanks for claiming your business; you may now create events for your business below!"
+                  redirect_to profile_path
+              elsif
                   #IF it's not an existing location
                   @location = Location.create(search_address_hash)
-                  render json: nearby_locations
+                  flash[:success] = "!!!Your business has been added to the system; you may now create events below!"
+                  # render json: nearby_locations
+                  redirect_to profile_path
+              else
+                  flash[:danger] = "Apologies, we were unable to find that location: please try searching for another"
+                  redirect_to new_location_path
               end
       else
           #If Longitude and Latitude are both available
@@ -41,10 +49,23 @@ class LocationsController < ApplicationController
               #If longitude and/or latitude are not available, use address form
               geo_and_reverse
               if existing_location
-                  render json: existing_location
+                  @existing_location.update!("user_id" => current_user.id)
+                  # render json: @existing_location
+                  flash[:success] = "Thanks for claiming your business; you may now create events for your business below!"
+                  redirect_to profile_path
               else
-                  @location = Location.create(address_hash)
-                  render json: nearby_locations
+                      @location = Location.new(address_hash)
+                    if @location.save
+                      flash[:success] = "Your business has been added to the system; you may now create events below!"
+                    else
+                      flash[:danger] = "Shit stopped working"
+
+                    end
+                      # render json: nearby_locations
+                      redirect_to new_location_path
+                    # else
+                      # redirect_to root_path
+                    # end
               end
           end
       end
@@ -71,7 +92,7 @@ class LocationsController < ApplicationController
   def geo_and_reverse
   #GEOCODE BY ADDRESS to Get Longitude & Latitude
   #AND REVERSE-GEOCODE on Result to keep data normalized
-      @lat_long_array = Geocoder.coordinates(address_string)
+      @lat_long_array = Geocoder.coordinates(address_string) || [nil, nil]
       @latitude = @lat_long_array[0].to_s
       @longitude = @lat_long_array[1].to_s
       @lat_long_string = @latitude + ", " + @longitude

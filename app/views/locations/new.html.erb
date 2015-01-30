@@ -5,16 +5,16 @@
       <h2>Create New Hawk Location:</h2>
 
         <%= bootstrap_form_for(@location) do |f| %>
-        <%= f.text_field :address, label: "Landmark or Full Address Search", :placeholder => "Search full address or Landmark" %>
-        <%= f.text_field :name, :placeholder => "Location name" %>
-        <%= f.text_field :desc, :placeholder => "Description"%>
+
+        <%= f.text_field :name, :placeholder => "Location name", :required => true %>
+        <%= f.text_field :desc, :placeholder => "Description", :required => true %>
         <%= f.hidden_field :latitude, :placeholder => "Latitude", :step => "any" %>
         <%= f.hidden_field :longitude, :placeholder => "Longitude", :step => "any" %>
-        <%= f.text_field :address_street, :placeholder => "Street" %>
-        <%= f.text_field :address_city, :placeholder => "City" %>
-        <%= f.text_field :address_state, :placeholder => "State" %>
-        <%= f.text_field :address_zip, :placeholder => "Zipcode" %>
-        <%= f.text_field :address_country, :placeholder => "Country" %>
+        <%= f.text_field :address_street, :placeholder => "Street", :required => true %>
+        <%= f.text_field :address_city, :placeholder => "City", :required => true %>
+        <%= f.text_field :address_state, :placeholder => "State", :required => true %>
+        <%= f.text_field :address_zip, :placeholder => "Zipcode", :required => true %>
+        <%= f.text_field :address_country, :placeholder => "Country", :required => true %>
         <%= f.hidden_field :user_id, value: @current_user.id, id: "user_id" %>
         <%= f.submit %>
         <% end %>

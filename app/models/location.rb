@@ -11,6 +11,9 @@ class Location < ActiveRecord::Base
   after_validation :reverse_geocode, :if => :has_coordinates, :unless => :has_address
   after_validation :geocode, :if => :has_address, :unless => :has_coordinates
 
+
+  validate :right_address
+
     #avoid unnessary API Requests (only if address present or change since last change); ex:
     #after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
     #http://www.rubydoc.info/github/alexreisner/geocoder/master/frames#Forward_and_Reverse_Geocoding_in_the_Same_Model
@@ -57,6 +60,12 @@ class Location < ActiveRecord::Base
 
     def populate_address
       self.address = "#{self.address_street}, #{self.address_city}, #{self.address_state} #{self.address_zip}"
+    end
+
+    def right_address
+      unless self.latitude && self.longitude
+        errors.add(:category, "not valid for non premium users")
+      end
     end
 
 end
