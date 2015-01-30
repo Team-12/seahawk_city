@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
 
   def capture_image new_photo_path
-    Cloudinary::Uploader.upload(new_photo_path)
+    Cloudinary::Uploader.upload(new_photo_path) if new_photo_path
   end
 
 

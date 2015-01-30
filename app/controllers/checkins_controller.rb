@@ -24,13 +24,20 @@ class CheckinsController < ApplicationController
     def create
 
         @user = current_user
+        
+        # if capture_image params[:checkin][:photo] 
+        #     image_data = capture_image params[:checkin][:photo].path
 
-        if params[:checkin][:photo] == ""
-            flash[:danger] = "You must submit a photo to check in!"
-            redirect_to new_checkin_path
-        else
-            image_data = capture_image params[:checkin][:photo].path
-        end
+        # else
+        #     flash[:danger] = "You must submit a photo to check in!"
+        #             @checkin = Checkin.new
+
+        #     # redirect_to new_checkin_path
+        # #     image_data = capture_image params[:checkin][:photo].path
+        # end
+
+        image_data = capture_image params[:checkin][:photo].path
+
 
         case params[:checkin][:checkinable_type]
         when "location"

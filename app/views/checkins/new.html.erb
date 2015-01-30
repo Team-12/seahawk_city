@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h3>1. Take a Picture!</h3>
       <%= bootstrap_form_for @checkin do |f| %>
-        <%= f.file_field :photo, hide_label: :true %>
+        <%= f.file_field :photo, hide_label: :true, :required => :true %>
         
         <%= f.hidden_field :checkinable_id, :id => "c_id", :label => "Checkinable ID" %>
         <%= f.hidden_field :checkinable_type, :id => "c_type" %>

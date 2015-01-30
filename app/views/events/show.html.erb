@@ -1,32 +1,41 @@
 
-  <div class="row">
-    <%= render 'partials/flash' %>
-    <div class="col-xs-12 col-md-12">
-      <h2>Event Detail</h2>
-      <!-- if @user.user_id = @event.user_id -->
-      <!-- link_to edit_event_path goes here... -->
-      <!-- end if -->
-      <hr>
-        Name: <%= @event.name %> <br>
-        Address: <br><!-- Need to create @address in controller -->
-        Date: <%= @event.date %> <br>
-        Start: <%= @event.start_time %> <br>
-        End: <%= @event.end_time %> <br>
-        Desc: <%= @event.desc %> <br>
-        <img src="<%= @event.photo_url %>" alt="">
-      <hr>
-      <h3>Checkins</h3>
-      <!-- checkin link goes here... -->
-      <% if @checkins %>
-        <ul>
-        <% @checkins.each do %>
-          <li>Fake Checkin...</li>
-        <% end %>
-        </ul>
-      <% else %>
-        <p>There are no checkins for this location. </p>
-        <%= link_to "Add a Checkin", new_checkin_path, :class => "btn btn-primary" %>
+<div class="row">
+  <%= render 'partials/flash' %>
+  <div class="col-xs-12 col-md-12">
+    <h2>Event Detail</h2>
+    <!-- if @user.user_id = @event.user_id -->
+    <!-- link_to edit_event_path goes here... -->
+    <!-- end if -->
+    <hr>
+
+    <dl class="dl-horizontal">
+    <dt>Name</dt>
+      <dd><%= @event.name %></dd> 
+        <dt>Date</dt>
+      <dd><%= @event.date.strftime("%l:%M %p") %></dd> 
+    </dl>
+
+
+    Name: <%= @event.name %> <br>
+    Address: <br><!-- Need to create @address in controller -->
+    Date: <%= @event.date %> <br>
+    Start: <%= @event.start_time %> <br>
+    End: <%= @event.end_time %> <br>
+    Desc: <%= @event.desc %> <br>
+    <img src="<%= @event.photo_url %>" alt="">
+    <hr>
+    <h3>Checkins</h3>
+    <!-- checkin link goes here... -->
+    <% if @checkins %>
+    <ul>
+      <% @checkins.each do %>
+      <li>Fake Checkin...</li>
       <% end %>
+    </ul>
+    <% else %>
+    <p>There are no checkins for this location. </p>
+    <%= link_to "Add a Checkin", new_checkin_path, :class => "btn btn-primary" %>
+    <% end %>
 
 
   </div>
