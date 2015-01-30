@@ -13,3 +13,5 @@ Click the check-in button to snap a photo of every 12th Man Flag you visit.
 First to find a flag? 100 points! Add a photo to the collection existing flags on the map, score 10 points!
 ###Your reward? 
 Bragging rights as the most Ballistic Beast-Mode Fan in town!
+
+####Early basic (wireframes)[https://dl.dropboxusercontent.com/u/4189611/Wireframe.pdf] are hosted here
