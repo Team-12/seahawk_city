@@ -1,6 +1,6 @@
   <div class="row">
     <%= render 'partials/flash' %>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
       <h2>Take a Picture!</h2>
       <%= bootstrap_form_for @checkin do |f| %>
         <%= f.file_field :photo, hide_label: :true, :required => :true %>
