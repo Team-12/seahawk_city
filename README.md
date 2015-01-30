@@ -15,3 +15,24 @@ First to find a flag? 100 points! Add a photo to the collection existing flags o
 Bragging rights as the most Ballistic Beast-Mode Fan in town!
 
 ####Early basic [wireframes](https://dl.dropboxusercontent.com/u/4189611/Wireframe.pdf)
+
+##API's Used
+Cloudinary
+Google Maps
+
+##Model Diagram
+Coming Soon...
+
+###Wishlist:
+* Multiple pictures per checkin
+* Drag and Drop pin on map feature
+* Badges and built out scoring features for gamification
+* Pre-populate address fields with ajax and google maps
+
+###Contributors
+Paul Howard
+Steve Woolsey
+Levi Ross
+Wyoming Telford
+
+
