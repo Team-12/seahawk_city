@@ -3,7 +3,11 @@ class SiteController < ApplicationController
   def index
 
     # TODO: If no session exists, render /about, else render /
-    @user = current_user
+    # if current_user
+      @user = current_user
+    # else
+    #   render "about"
+    # end
 
     # TODO: Don't use .all here - Need to find by date (only >= today), then pipe to .near
     @nearby = Event.all.sort_by{|event| event.date}
