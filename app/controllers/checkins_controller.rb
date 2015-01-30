@@ -6,6 +6,10 @@ class CheckinsController < ApplicationController
     def new
         @user = current_user
         # if !user, error, redirect to index with flash "log in"
+        if !@user
+            flash[:danger] = "You must login or signup to make a checkin."
+            redirect_to login_path
+        end
         @checkin = Checkin.new
         if params[:latitude] && params[:longitude]
             @nearby = Location.near("#{params[:latitude]}, #{params[:longitude]}", 1)
