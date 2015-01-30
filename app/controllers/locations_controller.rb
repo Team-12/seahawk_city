@@ -12,6 +12,7 @@ class LocationsController < ApplicationController
 
   def new
       @location = Location.new
+      @user = current_user
   end
 
   def create
@@ -119,7 +120,8 @@ class LocationsController < ApplicationController
           "address_country" => params[:location][:address_country],
           "latitude" => @lat_long_array[0],
           "longitude" => @lat_long_array[1],
-          "address" => params[:location][:address]
+          "address" => params[:location][:address],
+          "user_id" => current_user.id
       }
   end
 
@@ -142,7 +144,8 @@ class LocationsController < ApplicationController
           "address_state" => first_match.state_code,
           "address_zip" => first_match.postal_code,
           "address_country" => first_match.country_code,
-          "address" => params[:location][:address]
+          "address" => params[:location][:address],
+          "user_id" => current_user.id
       }
   end
 
@@ -159,7 +162,8 @@ class LocationsController < ApplicationController
           "address_country" => first_match.country_code,
           "latitude" => first_match.latitude,
           "longitude" => first_match.longitude,
-          "address" => params[:location][:address]
+          "address" => params[:location][:address],
+          "user_id" => current_user.id
       }
   end
 
