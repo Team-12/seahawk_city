@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.create(user_params.merge({"is_business_owner" => false}))
     if @user.errors.any?
       render :new
     else
