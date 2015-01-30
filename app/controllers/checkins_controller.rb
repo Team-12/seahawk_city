@@ -10,7 +10,9 @@ class CheckinsController < ApplicationController
         if params[:latitude] && params[:longitude]
             @nearby = Location.near("#{params[:latitude]}, #{params[:longitude]}", 1)
         else
-            @nearby = Location.near("Seattle,WA")
+            # @nearby = Location.near("Seattle,WA")
+            flash[:danger] = "We were unable to determine your location, please make sure GPS is enabled"
+            redirect_to root_path
         end
     end
 
@@ -32,7 +34,7 @@ class CheckinsController < ApplicationController
         when "event"
             checkinable = Event.find_by_id(params[:checkin][:checkinable_id])
         when "new"
-            checkinable = Location.create_from_geocoder(params[:checkin][:locations][:address]).first
+            checkinable = Location.create_from_geocoder(params[:checkin][:locations][:address])
         else
             flash[:danger] = "You must select a location or event to check in!"
             redirect_to new_checkin_path
