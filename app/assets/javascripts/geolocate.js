@@ -14,6 +14,7 @@ $(function(){
             longField.val(longitude);
         }
         $("#checkin_link").attr("href", "/checkins/new?latitude="+position.coords.latitude + "&longitude=" + position.coords.longitude)
+        $("#checkin_link_home").attr("href", "/checkins/new?latitude="+position.coords.latitude + "&longitude=" + position.coords.longitude)
         // $('#checkin_submit').prop('disabled', false); // enables button after location is found
 
         // maybe also add ajax call to find nearby locations
