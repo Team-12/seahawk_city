@@ -32,7 +32,6 @@
         </ul>
       <% end %>
       <hr>
-      <% if @current_user.is_business_owner == false %>
         <% if @current_user.checkins.any? %>
           <h3>Your Checkins</h3>
           # NOTE: Should sort/group these checkin type (new, exiting, event)
@@ -44,4 +43,4 @@
         <% else %>
           <p>You have no checkins. :-(</p>
         <% end %>
-      <% end %>
+

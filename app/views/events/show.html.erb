@@ -22,7 +22,7 @@
     <% if @checkins %>
       <ul>
         <% @checkins.each do %>
-          <li>Fake Checkin...</li>
+          <li><%= @checkin.user.user_name %></li>
         <% end %>
       </ul>
     <% else %>

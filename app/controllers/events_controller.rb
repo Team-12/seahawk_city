@@ -39,6 +39,7 @@ class EventsController < ApplicationController
     else
       # Error: Event not found
     end
+    @checkins = Checkin.find_by_checkinable_id(params[:id])
   end
 
   def edit
