@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-12">
       <h1>Login</h1>
-
+      <%= render 'partials/flash' %>
       <% if @user.errors.any? %>
           <% @user.errors.full_messages.each do |error| %>
               <div class="alert alert-danger"><%= error %></div>
