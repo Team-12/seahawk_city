@@ -1,19 +1,20 @@
   <div class="row">
     <%= render 'partials/flash' %>
     <div class="col-xs-12 col-md-12">
-      <h1>User Profile</h1>
-      <hr>
+      <h2>User Profile</h2>
+
+
 
       <%= bootstrap_form_for :user, :method => :patch do |f| %>
         <%= f.text_field :user_name, :disabled => "disabled" %>
         <%= f.text_field :email, :disabled => "disabled" %>
         <%= f.password_field :password, :value => "xxxxx", :disabled => "disabled" %>
-        <%= f.form_group :is_business_owner, label: { text: "Do You Own a Business That Hosts Hawks Events?"} do %><br>
-          <%= f.radio_button :is_business_owner, false, label: "No, I'm a Fan!", inline: true%>
-          <%= f.radio_button :is_business_owner, true, label: "Yes, Our Business Hosts Hawk's Events!", inline: true%>
+        <%= f.form_group :is_business_owner, label: { text: "Do You Own a Business That Hosts Seahawks Events?"} do %><br>
+          <%= f.radio_button :is_business_owner, false, label: "No, I'm a Fan!", inline: true, :style => "color:#002244;"%>
+          <%= f.radio_button :is_business_owner, true, label: "Yes, Our Business Hosts Seahawks Events!", inline: true, :style => "color:#002244;" %>
           <% end %>
 
-        <%= f.submit "Edit" %>
+        <%= f.submit "Edit", :class => "btn btn-primary" %>
       <% end %>
 
       <hr>
