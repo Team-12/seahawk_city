@@ -1,5 +1,18 @@
-<h1>Event index page</h1>
+<h2>Seahawk City Events</h2><br>
 
+  <%= render 'partials/flash' %>
+<div class="row">
+<div class="col-xs-12 col-sm-12, col-md-12">
+<div class="table-responsive">
+<table class="table">
 <% @events.each do |event| %>
-  <li><h1><%= event.name%><%= cl_image_tag(event.photo_url, :width => 200, :height => 200, :crop => :fill) %></h1></li>
+  <tr>
+    <td class="tableRow"><%= event.name %></td>
+    <td class="tableImg"><%= cl_image_tag(event.photo_url, :width => 125, :height => 125, :crop => :fill) %></td></span>
+  </tr>
 <% end %>
+
+</table>
+</div>
+</div>
+</div>

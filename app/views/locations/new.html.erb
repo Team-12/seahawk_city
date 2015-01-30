@@ -1,5 +1,6 @@
 
   <div class="row">
+    <%= render 'partials/flash' %>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h1>New Location Page</h1>
       <h3>Navigate to: <%= link_to "Locations", locations_path %></h3><br>
@@ -7,8 +8,8 @@
         <%= f.text_field :address, label: "Landmark or Full Address Search", :placeholder => "Search full address or Landmark" %>
         <%= f.text_field :name, :placeholder => "Location name" %>
         <%= f.text_field :desc, :placeholder => "Description"%>
-        <%= f.number_field :latitude, :placeholder => "Latitude", :step => "any" %>
-        <%= f.number_field :longitude, :placeholder => "Longitude", :step => "any" %>
+        <%= f.hidden_field :latitude, :placeholder => "Latitude", :step => "any" %>
+        <%= f.hidden_field :longitude, :placeholder => "Longitude", :step => "any" %>
         <%= f.text_field :address_street, :placeholder => "Street" %>
         <%= f.text_field :address_city, :placeholder => "City" %>
         <%= f.text_field :address_state, :placeholder => "State" %>
@@ -17,7 +18,7 @@
         <%= f.text_field :user_id, value: @current_user.id, id: "user_id" %>
         <%= f.submit %>
         <% end %>
-        <button class="btn btn-primary">Get GPS</button>
+
     </div>
   </div>
 
