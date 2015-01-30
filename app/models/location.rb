@@ -7,7 +7,9 @@ class Location < ActiveRecord::Base
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
 
-  after_validation :geocode, :reverse_geocode
+  after_validation :populate_address,:if => :has_address_parts, :unless => :has_address
+  after_validation :reverse_geocode, :if => :has_coordinates, :unless => :has_address
+  after_validation :geocode, :if => :has_address, :unless => :has_coordinates
 
     #avoid unnessary API Requests (only if address present or change since last change); ex:
     #after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
@@ -36,6 +38,25 @@ class Location < ActiveRecord::Base
         address_country:results.country_code
         })
       end
+    end
+
+
+    private
+
+    def has_coordinates
+      !(self.latitude.blank? || self.longitude.blank?)
+    end
+
+    def has_address
+      !self.address.blank?
+    end
+
+    def has_address_parts
+      !(self.address_street.blank? || self.address_city.blank? || self.address_state.blank? || self.address_zip.blank?)
+    end
+
+    def populate_address
+      self.address = "#{self.address_street}, #{self.address_city}, #{self.address_state} #{self.address_zip}"
     end
 
 end
