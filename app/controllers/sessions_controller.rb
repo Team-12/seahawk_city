@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       if @user
         session[:user_id] = @user.id
         flash[:success] = "Welcome back, #{@user.user_name}"
-        redirect_to root_path
+        redirect_to "/"
       else
         flash[:danger] = "Sorry. Try again?"
         render :new
