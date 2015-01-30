@@ -1,17 +1,17 @@
   <div class="row">
     <%= render 'partials/flash' %>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h3>1. Take a Picture!</h3>
+      <h2>Take a Picture!</h2>
       <%= bootstrap_form_for @checkin do |f| %>
         <%= f.file_field :photo, hide_label: :true, :required => :true %>
-        
+
         <%= f.hidden_field :checkinable_id, :id => "c_id", :label => "Checkinable ID" %>
         <%= f.hidden_field :checkinable_type, :id => "c_type" %>
         <%= f.hidden_field :latitude, value: params[:latitude], id: "lat_field" %>
         <%= f.hidden_field :longitude, value: params[:longitude], id: "long_field" %>
       <div id="nearby">
       <hr>
-        <h3>2. Where Is This?</h3>
+        <h2>Where Is This?</h2>
         <ul class="list-group">
           <% @nearby.each do |n| %>
             <li class="list-group-item nearby-location nearEvent" data-id="<%= n.id %>" data-type="location"> <%= n.name %> </li>
@@ -34,8 +34,8 @@
             <%# locations_form.text_field :longitude, :label => "Longitude" %>
           <% end %>
         </div>
-        <hr>
-        <h3>Tell Us More</h3>
+
+        <h2>Tell Us More</h2>
         <%= f.text_area :note, placeholder: "enter a description", hide_label: :true %>
         <%= f.submit "Submit", id: "checkin_submit" %>
       <% end %>

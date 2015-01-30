@@ -23,24 +23,68 @@
         <%= link_to "Add a New Location", new_location_path, :class => "btn btn-primary" %>
       <% end %>
 
+      <div class="row">
+      <div class="col-xs-12 col-sm-12, col-md-12">
+      <div class="table-responsive">
+      <table class="table">
       <% if @current_user.locations.any? %>
-        <h3>Your Registered Locations</h3>
-        <ul>
         <% @current_user.locations.each do |location| %>
-          <li><h4>Name: <%= location.name %>. Details: <%= location.desc %></h4><%= link_to "+", "events/new/" + location.id.to_s, :class => "btn btn-primary btn-xs"  %></li>
-        <% end %>
-        </ul>
-      <% end %>
-      <hr>
-        <% if @current_user.checkins.any? %>
-          <h3>Your Checkins</h3>
-          # NOTE: Should sort/group these checkin type (new, exiting, event)
-          <ul>
-          <% @current_user.checkins.each do |checkin| %>
-            <li><h4><%= checkin.note %> Image: <%= cl_image_tag(checkin.photo_url, :width => 50, :height => 50, :crop => :fill) %></h4></li>
-          <% end %>
-        </ul>
-        <% else %>
-          <p>You have no checkins. :-(</p>
+         <h3>Your Registered Locations</h3>
+          <tr>
+            <th class="tableRow">New:</th>
+            <th class="tableRow">Name:</th>
+            <th class="tableRow">Description:</th>
+
+
+          </tr>
+          <tr>
+            <td><%= link_to "+", "events/new/" + location.id.to_s, :class => "btn btn-primary btn-xs"  %></td>
+            <td class="tableRow"><%= location.name %></td>
+            <td class="tableRow"><%= location.desc %></td>
+
+          </tr>
         <% end %>
 
+      <% end %>
+
+      </table>
+      </div>
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col-xs-12 col-sm-12, col-md-12">
+      <div class="table-responsive">
+      <table class="table">
+
+        <% if @current_user.checkins.any? %>
+         <h3>Your Checkins</h3>
+          <% @current_user.checkins.each do |checkin| %>
+            <tr>
+              <th class="tableRow ">Note:</th>
+              <th class="tableRow ">Image:</th>
+
+            </tr>
+
+          <tr>
+            <td class='tableRow'><%= checkin.note %></td>
+            <td class="tableImg"><%= cl_image_tag(checkin.photo_url, :width => 50, :height => 50, :crop => :fill) %></td>
+          </tr>
+          <% end %>
+
+        <% else %>
+          <tr>
+          <td class="tableRow">You have no checkins. </td>
+          </tr>
+        <% end %>
+     </table>
+
+      </div>
+      </div>
+      <br><%= link_to "Checkin", new_checkin_path, :class => "btn btn-primary checkin_link" %>
+      <div class="checkin_searching">Searching for location...</div>
+      </div>
+
+      </div>
+      </div>
+>>>>>>> origin/new_pages

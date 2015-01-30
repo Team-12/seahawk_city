@@ -6,12 +6,12 @@
     <!-- link_to edit_event_path goes here... -->
     <!-- end if -->
       <div class="eventDetail">
-      Name: <%= @event.name %> <br>
-      Location: <%= @event.location.name %> <br>
-      Date: <%= @event.date %> <br>
-      Start: <%= @event.start_time.strftime("%l:%M %p") %> <br>
-      End: <%= @event.end_time.strftime("%l:%M %p") %> <br>
-      Desc: <%= @event.desc %> <br>
+      <p><strong style="color:#69BE28;">Name:</strong> <%= @event.name %></p>
+      <p><strong style="color:#69BE28;">Location:</strong> <%= @event.location.name %></p>
+      <p><strong style="color:#69BE28;">Date:</strong> <%= @event.date %> </p>
+      <p><strong style="color:#69BE28;">Start:</strong> <%= @event.start_time.strftime("%l:%M %p") %> </p>
+      <p><strong style="color:#69BE28;">End:</strong> <%= @event.end_time.strftime("%l:%M %p") %> </p>
+      <p><strong style="color:#69BE28;">Desc:</strong> <%= @event.desc %> </p>
 
      <%= cl_image_tag(@event.photo_url, :width => 275, :crop => :fill, :class => "cloudImg") %>
 
