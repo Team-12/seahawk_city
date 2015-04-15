@@ -24,8 +24,8 @@ class CheckinsController < ApplicationController
     def create
 
         @user = current_user
-        
-        # if capture_image params[:checkin][:photo] 
+
+        # if capture_image params[:checkin][:photo]
         #     image_data = capture_image params[:checkin][:photo].path
 
         # else
@@ -71,4 +71,3 @@ class CheckinsController < ApplicationController
 
 
 end
-
